@@ -1,0 +1,2 @@
+----------------------------------------------------------------------
+select technologyName,projectName from technology,project;
