@@ -4,6 +4,8 @@ import java.util.List;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.bean.ProjectBean;
+import com.grownited.bean.TechnologyBean;
 import com.grownited.dao.ProjectDao;
 import com.grownited.dao.TechnologyDao;
 
@@ -23,7 +26,6 @@ public class ProjectController {
 	TechnologyDao technologyDao;
 	
 	@Autowired
-	
 	ProjectDao projectDao;
 	
 	@GetMapping("/newproject")
@@ -49,8 +51,8 @@ public class ProjectController {
 	public String listTechnology(Model model) {
 		
 		//pull all category from db-table
-		List<ProjectBean> listProject=projectDao.getAllProject();
-		model.addAttribute("listProject",listProject);
+		List<ProjectBean> list=projectDao.getAllProject();
+		model.addAttribute("list",list);
 		return "ListProject";
 	}
 	
@@ -59,6 +61,15 @@ public class ProjectController {
 		
 		projectDao.deleteProject(projectId);
 		return "redirect:/listproject";
+	}
+	
+	//view
+	
+	@GetMapping("/viewproject/{projectId}")
+	public String viewProject(@PathVariable("projectId")Integer projectId,Model model) {
+		ProjectBean projectBean =projectDao.getProjectById(projectId);
+		model.addAttribute("projectBean",projectBean);
+	return "ViewProject";
 	}
 	
 	

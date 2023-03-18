@@ -14,12 +14,8 @@
 	<input type="submit" value="save Technology"/>
 	</form>
 	
-	<br><br>
-	<a href="listtechnologies">List Category</a><br><br>
 	
-	<a href="newproject">Add New Project</a><br>
-	<br>
-	<a href="listproject">List Project</a>
+	
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,12 +20,11 @@ import com.grownited.dao.TechnologyDao;
 public class TechnologyController {
 	
 	@Autowired
-	
 	TechnologyDao technologyDao;
 	
 	
 	
-	@GetMapping("/newtechnology")
+		@GetMapping("/newtechnology")
 
 		public String newTechnology(HttpServletRequest request) { // method
 

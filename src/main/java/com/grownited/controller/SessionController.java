@@ -106,7 +106,7 @@ public class SessionController {
 					//projectmanager
 				
 				{
-					return"redirect:/home";
+					return"Home";
 				}
 					
 					

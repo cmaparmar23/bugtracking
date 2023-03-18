@@ -40,6 +40,10 @@ public class TechnologyDao {
 		stmt.update(updateQuery,technologyId);
 		
 	}
+	
+	//list
+	
+	
 	public TechnologyBean getTechnologyById(Integer technologyId) {
 		TechnologyBean technologyBean=null;
 		try {
@@ -55,8 +59,7 @@ public class TechnologyDao {
 	}
 	
 	
-	//list
-	
+
 	
 	//update
 	

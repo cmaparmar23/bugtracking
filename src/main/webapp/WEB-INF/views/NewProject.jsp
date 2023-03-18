@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<%
+	List<TechnologyBean> list = (List<TechnologyBean>) request.getAttribute("list");
+%>
 	
 <form action="saveproject" method="post">
 		
@@ -17,6 +20,21 @@
 	
 		Project Title:<input type="text" name ="title"/><br><br>
 		Description:<input type="text" name ="description"/><br><br>
+		
+		TechnologyId<select name="TechnologyId">
+		<%
+			for(TechnologyBean tb:list){
+		%>
+		
+		<option value="<%=tb.getTechnologyId()%>">
+		<%=tb.getTechnologyName() %> </option>
+		
+		
+		<%
+			}
+		%>
+		
+		</select><br><br>
 		Estimated Hours:<input type="text" name ="estimatedHours"/><br><br>
 		Start Date:<input type="date" name ="startDate"/><br><br>
 		Completion Date:<input type="date" name ="completionDate"/><br><br>
@@ -27,9 +45,7 @@
 		<br><br>
 	
 		
-		
-
-</form>
+	
 
 </body>
 </html>

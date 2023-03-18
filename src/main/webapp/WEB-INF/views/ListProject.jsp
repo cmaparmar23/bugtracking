@@ -12,47 +12,36 @@
 <body>
 
 
-
-
 <h3>List Project</h3>
 
 <%
-	List<ProjectBean> listProject=(List<ProjectBean>)request.getAttribute("listProject");
+	List<ProjectBean> list=(List<ProjectBean>)request.getAttribute("list");
 %>
+
 <table border="1">
+
 	<tr>
 		<th>ProjectId</th>
 		<th>Title</th>
-		<th>Description</th>
-		<th>TecnologyId</th>
-		<th>Estimated Hours</th>
-		<th>Start Date</th>
-		<th>Completion Date</th>
-		<th>Utilized Hours</th>
+		<th>TechnologyId</th>
 		<th>Status Id </th>
-		<th>Deleted</th>
 		<th>Action</th>
 	</tr>
 	
 <%
-	for(ProjectBean pb:listProject){
+	for(ProjectBean pb:list){
 %>
 
 	
 	<tr>
 		<td><%=pb.getProjectId() %></td>
 		<td><%=pb.getTitle() %></td>
-		<td><%=pb.getDescription() %></td>
 		<td><%=pb.getTechnologyId() %></td>
-		<td><%=pb.getEstimatedHours() %></td>
-		<td><%=pb.getStartDate() %></td>
-		<td><%=pb.getCompletionDate() %></td>
-		<td><%=pb.getUtilizedHours() %></td>
 		<td><%=pb.getStatusId() %></td>
-		<td><%=pb.getDeleted() %></td>
 	
 	
-		<td><a href="deleteproject/<%=pb.getProjectId() %>">Delete</a></td>
+		<td><a href="deleteproject/<%=pb.getProjectId() %>">Delete</a>|
+		<a href="viewproject/<%=pb.getProjectId()%>">View</a></td>
 	</tr>
 	
 <%

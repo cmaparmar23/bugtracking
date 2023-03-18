@@ -11,6 +11,7 @@ public class ProjectBean {
 	private Integer utilizedHours;
 	private Integer statusId;
 	private Boolean deleted;
+	
 	String technologyName;
 	
 	

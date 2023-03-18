@@ -6,6 +6,7 @@ public class TechnologyBean {
 	private Integer technologyId;
 	 private String technologyName;
 	private Boolean deleted;
+	
 	public Integer getTechnologyId() {
 		return technologyId;
 	}
