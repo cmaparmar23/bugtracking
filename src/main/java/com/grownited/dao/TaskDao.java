@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.grownited.bean.ProjectBean;
+
 import com.grownited.bean.TaskBean;
 
 @Repository
@@ -16,17 +16,17 @@ public class TaskDao {
 	
 	JdbcTemplate stmt;
 	public void addTask(TaskBean taskBean) {
-		String insertQuery="insert into task(taskName,projectId,estimatedHours,totalUtilizedHours,documentUrl,description)values(?,?,?,?,?,?)";
+		String insertQuery="insert into task(moduleId,statusId,projectId,taskName,estimatedHours,totalUtilizedHours,documentUrl,description)values(?,?,?,?,?,?,?,?)";
 		
-		stmt.update(insertQuery,taskBean.getTaskName(),taskBean.getProjectId(),taskBean.getEstimatedHours(),taskBean.getTotalUtilizedHours(),taskBean.getDocumentUrl(),taskBean.getDescription());
+		stmt.update(insertQuery,taskBean.getModuleId(),taskBean.getStatusId(),taskBean.getProjectId(),taskBean.getTaskName(),taskBean.getEstimatedHours(),taskBean.getTotalUtilizedHours(),taskBean.getDocumentUrl(),taskBean.getDescription());
 		
 	}
 	
 	public List<TaskBean> getAllTask() {
 		
 		String selectQuery="select * from task";
-		List<TaskBean>listtask=stmt.query(selectQuery, new BeanPropertyRowMapper<TaskBean>(TaskBean.class));
-		return listtask;
+		List<TaskBean>listTask=stmt.query(selectQuery, new BeanPropertyRowMapper<TaskBean>(TaskBean.class));
+		return listTask;
 		
 	}
 	
@@ -50,6 +50,16 @@ public class TaskDao {
 		}
 		return taskBean;
 	}
+	
+	
+	//update
+	
+	public void updateTask (TaskBean taskBean) {
+		String updateQuery="update task set taskName=? where taskId=?";
+		stmt.update(updateQuery,taskBean.getTaskName(),taskBean.getTaskId());
+		
+	}
+		
 	
 
 	

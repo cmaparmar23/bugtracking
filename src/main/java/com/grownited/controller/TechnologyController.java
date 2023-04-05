@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.TechnologyBean;
 import com.grownited.dao.TechnologyDao;
@@ -82,13 +83,29 @@ public class TechnologyController {
 	
 	
 	
-	@GetMapping("/viewtechnology/{technologyId}")
-	public String viewTechnology(@PathVariable("technologyId")Integer technologyId,Model model) {
+	@GetMapping("/viewtechnology")
+	public String viewTechnology(@RequestParam("technologyId")Integer technologyId,Model model) {
 		TechnologyBean technologyBean =technologyDao.getTechnologyById(technologyId);
 		model.addAttribute("technologyBean",technologyBean);
 	return "ViewTechnology";
 	}
 
+
+
+@GetMapping("/edittechnology")
+public String editTechnology (@RequestParam("technologyId") Integer technologyId,Model model){
+	
+	TechnologyBean technologyBean=technologyDao.getTechnologyById(technologyId);
+	model.addAttribute("technologyBean",technologyBean);
+	return "EditTechnology";
+	
+}
+
+@PostMapping("/updatetechnology")
+public String updateTechnology(TechnologyBean technologyBean) {
+	technologyDao.updateTechnology(technologyBean);
+	return "redirect:/listtechnologies";
+}
 }
 
 

@@ -25,67 +25,59 @@ ${error}
 </html>
 -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Forgot Password</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-
-      <form action="sendotpforforgetpassword" method="post">
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" name="email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Send otp</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
-      <p class="mt-3 mb-1">
+  <title>Bug Tracking| Forgot Password</title>
+  <jsp:include page="AllCss.jsp"></jsp:include>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+          <div class="row flex-grow">
+            <div class="col-lg-4 mx-auto">
+              <div class="auth-form-light text-left p-5">
+                <div class="brand-logo">
+                  <img src="../../assets1/images/logo.svg">
+                </div>
+                <h4>Bug Tracking</h4>
+                <p class="font-weight-light">You forgot your password? Here you can easily retrieve a new password.</p>
+                <form class="pt-3" action="sendotpforforgetpassword" method="post">
+                  <div class="form-group">
+                    <input type="email" class="form-control form-control-lg"  placeholder="Email" name="email">
+                  </div>
+                 
+                  <div class="mt-3">
+                    <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit" >Send OTP</button>
+                  </div>
+                  
+                   <p class="mt-3 mb-1">
         <a href="login">Login</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="signup" class="text-center">Register a new membership</a>
       </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
     </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-</body>
-</html>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets1/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets1/js/off-canvas.js"></script>
+    <script src="../../assets1/js/hoverable-collapse.js"></script>
+    <script src="../../assets1/js/misc.js"></script>
+  </body>
+  </html>

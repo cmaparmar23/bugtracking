@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.StatusBean;
 
+
 @Repository
 
 public class StatusDao {
@@ -24,14 +25,38 @@ public class StatusDao {
 	public List<StatusBean>getAllStatus(){
 		
 		String selectQuery= "select  *from status"; 
-		List<StatusBean>listproject=stmt.query(selectQuery, new BeanPropertyRowMapper<StatusBean>(StatusBean.class));
-		return listproject;
+		List<StatusBean>listStatus=stmt.query(selectQuery, new BeanPropertyRowMapper<StatusBean>(StatusBean.class));
+		return listStatus;
 	}
 	
 	public void deleteStatus(Integer statusId) {
 		
 		String updateQuery="delete from status where statusId=?";
 		stmt.update(updateQuery,statusId);
+	}
+	
+	
+	public StatusBean getStatusById(Integer statusId) {
+		StatusBean statusBean=null;
+		try {
+			statusBean=stmt.queryForObject("select * from status where statusId=?",
+					new BeanPropertyRowMapper<StatusBean>(StatusBean.class),new Object[] {statusId});
+			
+		}
+		catch(Exception e) {
+			System.out.println("StatusDao::getStatusById()");
+			System.out.println(e.getMessage());
+		}
+		return statusBean;
+	}
+	
+	
+	//update
+	
+	public void updateStatus (StatusBean statusBean) {
+		String updateQuery="update status set statusName=? where statusId=?";
+		stmt.update(updateQuery,statusBean.getStatusName(),statusBean.getStatusId());
+		
 	}
 	
 

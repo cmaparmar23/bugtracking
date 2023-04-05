@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grownited.bean.ProjectUserBean;
+import com.grownited.bean.StatusBean;
 import com.grownited.bean.StatusBean;
 import com.grownited.dao.StatusDao;
 @Controller
@@ -36,8 +39,8 @@ public class StatusController {
 	@GetMapping("/liststatus")
 	public String listStatus(Model model) {
 		
-		List<StatusBean> list=statusDao.getAllStatus();
-		model.addAttribute("list",list);
+		List<StatusBean> listStatus=statusDao.getAllStatus();
+		model.addAttribute("listStatus",listStatus);
 		return "ListStatus";
 	}
 	
@@ -48,9 +51,31 @@ public class StatusController {
 		return "redirect:/liststatus";
 	}
 	
+	
+	@GetMapping("/viewstatus")
+	public String viewStatus(@RequestParam("statusId")Integer statusId,Model model) {
+		StatusBean statusBean =statusDao.getStatusById(statusId);
+		model.addAttribute("statusBean",statusBean);
+	return "ViewStatus";
+	}
+	
+	
+	@GetMapping("/editstatus")
+	public String editStatus (@RequestParam("statusId") Integer statusId,Model model){
 		
+		StatusBean statusBean=statusDao.getStatusById(statusId);
+		model.addAttribute("statusBean",statusBean);
+		return "EditStatus";
 		
 	}
+
+	@PostMapping("/updatestatus")
+	public String updateStatus(StatusBean statusBean) {
+		statusDao.updateStatus(statusBean);
+		return "redirect:/liststatus";
+	}
+	
+}
 	
 
 

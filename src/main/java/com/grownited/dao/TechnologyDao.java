@@ -63,7 +63,11 @@ public class TechnologyDao {
 	
 	//update
 	
-	//delete
+public void updateTechnology (TechnologyBean technologyBean) {
+	String updateQuery="update technology set technologyName=? where technologyId=?";
+	stmt.update(updateQuery,technologyBean.getTechnologyName(),technologyBean.getTechnologyId());
+	
+}
 	
 	
 

@@ -23,10 +23,12 @@ JdbcTemplate stmt;
  
  }
  
+ //list
+ 
  public List<ModuleBean>getAllModule(){
 	 String selectQuery="select * from module";
-	 List<ModuleBean>list=stmt.query(selectQuery, new BeanPropertyRowMapper<ModuleBean>(ModuleBean.class));
-	 return list;
+	 List<ModuleBean>listModule=stmt.query(selectQuery, new BeanPropertyRowMapper<ModuleBean>(ModuleBean.class));
+	 return listModule;
 	 
 	 
  }
@@ -37,7 +39,6 @@ JdbcTemplate stmt;
  }
  
  
-//list
 	
 	public ModuleBean getModuleById(Integer moduleId) {
 		ModuleBean moduleBean=null;

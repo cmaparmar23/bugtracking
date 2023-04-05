@@ -1,6 +1,8 @@
 package com.grownited.dao;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -11,6 +13,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import com.grownited.bean.ForgetPasswordBean;
 import com.grownited.bean.LoginBean;
+import com.grownited.bean.ProjectUserBean;
 import com.grownited.bean.UpdatePasswordBean;
 import com.grownited.bean.UserBean;
 
@@ -24,11 +27,11 @@ public class UserDao {
 	
 	//add customer--signup
 	public void insertUser(UserBean userBean) {
-		String insertQuery="insert into users(firstName,lastName,email,password,role)values(?,?,?,?,?)";
+		String insertQuery="insert into users(firstName,lastName,email,password,role,gender,number)values(?,?,?,?,?,?,?)";
 		
 		
 		//role->2 for customer/buyer/user
-		stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2);//query execute
+		stmt.update(insertQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),2,userBean.getGender(),userBean.getNumber());//query execute
 		
 		
 	}
@@ -44,6 +47,8 @@ public class UserDao {
 		e.getMessage();
 	}
 		return null;
+		
+		
 }
 	
 	
@@ -88,6 +93,29 @@ public class UserDao {
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+	
+	
+	
+	public UserBean getUserByEmail(String email) {
+		String selectQuery = "select * from users where email  = ?";
+		try {
+		return stmt.queryForObject(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class),
+				new Object[] { email });
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
+	
+	//list
+	
+public List<UserBean>getAllUser(){
+		
+		String selectQuery= "select  *from users"; 
+		List<UserBean>listUser=stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		return listUser;
 	}
 }	
 	

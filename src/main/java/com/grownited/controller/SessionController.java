@@ -1,6 +1,7 @@
 package com.grownited.controller;
 
 import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -36,7 +37,7 @@ public class SessionController {
 	@Autowired
 	EmailService emailService;
 
-	private HttpSession session;
+	
 	
 	
 	//jsp open
@@ -48,14 +49,25 @@ public class SessionController {
 	//jsp input process
 		
 		@PostMapping("/saveuser")
-		public String saveUser(UserBean user) {
+		public String saveUser(UserBean user,Model model) {
 	
 			System.out.println(user.getFirstName());
 			System.out.println(user.getEmail());
 			
+			// db validation
 			
-			userDao.insertUser(user);
-			return"Login"; //Employeelogin.jsp
+		
+			// x@x.com present ?
+			UserBean userBean=userDao.getUserByEmail(user.getEmail()); 
+			if (userBean == null) {
+				// insert
+				userDao.insertUser(user);
+				return "Login"; // EmployeeLogin.jsp
+			}else {
+				model.addAttribute("error","Email is already Registerd with Us");
+				return "Signup";
+		}
+			
 		}
 		
 		//calculate Temsalary()
@@ -139,23 +151,23 @@ public class SessionController {
 			System.out.println(forgetPasswordBean.getEmail());
 			
 			
-		UserBean user=userDao.findUserByEmail(forgetPasswordBean);
-		if(user==null) {
-			//error
+		    UserBean user=userDao.findUserByEmail(forgetPasswordBean);
+		    	if(user==null) {
+		    		//error
 			
-			model.addAttribute("error","Invalid Email");
-			return "ForgetPassword";
-		}else {
-			//otp
-			//generate otp
-			String otp=OtpGenetator.generateOTP(6);
-			userDao.updateOtp(forgetPasswordBean.getEmail(), otp);
+		    		model.addAttribute("error","Invalid Email");
+		    		return "ForgetPassword";
+		    	}else {
+		    		//otp
+		    		//generate otp
+		    		String otp=OtpGenetator.generateOTP(6);
+		    		userDao.updateOtp(forgetPasswordBean.getEmail(), otp);
 			
 			
-			//user set-->email
-			//send email
-			emailService.sendEmailForForgetPassword(forgetPasswordBean.getEmail(), otp);
-			return "redirect:/updatepasswordjspopen";
+		    		//user set-->email
+		    		//send email
+		    		emailService.sendEmailForForgetPassword(forgetPasswordBean.getEmail(), otp);
+		    		return "redirect:/updatepasswordjspopen";
 			
 		
 		}
@@ -193,9 +205,12 @@ public class SessionController {
 		
 		@GetMapping("/logout")
 		public String logout(HttpSession session) {
-			session.invalidate();
+			session.invalidate();//destroy session
 			return "redirect:/login";
 		}
+		
+		
+		
 		
 
 		

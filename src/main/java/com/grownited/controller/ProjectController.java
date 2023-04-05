@@ -12,24 +12,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.ProjectBean;
-import com.grownited.bean.TechnologyBean;
+import com.grownited.bean.ProjectBean;
 import com.grownited.dao.ProjectDao;
+import com.grownited.dao.StatusDao;
 import com.grownited.dao.TechnologyDao;
+import com.grownited.dao.ProjectDao;
 
 @Controller
 
 public class ProjectController {
 	
 	@Autowired
-	TechnologyDao technologyDao;
-	
-	@Autowired
 	ProjectDao projectDao;
 	
+	
+	@Autowired
+	StatusDao statusDao;
+	
+	@Autowired
+	TechnologyDao technologyDao;
+	
+	
+	
 	@GetMapping("/newproject")
-	public String newProject() {
+	public String newProject(Model model) {
+		model.addAttribute("list",technologyDao.getAllTechnology());
+		model.addAttribute("listStatus",statusDao.getAllStatus());
 		return "NewProject";
 		
 	}
@@ -37,7 +48,7 @@ public class ProjectController {
 	@PostMapping("/saveproject")
 	public String saveProject(ProjectBean projectBean)
 	{
-		System.out.println(projectBean.getTitle());
+		System.out.println(projectBean.getProjectName());
 		System.out.println(projectBean.getProjectId());
 		projectDao.addProject(projectBean);
 		return "redirect:/listproject";
@@ -48,11 +59,11 @@ public class ProjectController {
 		
 	}
 	@GetMapping("/listproject")
-	public String listTechnology(Model model) {
+	public String listProject(Model model) {
 		
 		//pull all category from db-table
-		List<ProjectBean> list=projectDao.getAllProject();
-		model.addAttribute("list",list);
+		List<ProjectBean> listProject=projectDao.getAllProject();
+		model.addAttribute("listProject",listProject);
 		return "ListProject";
 	}
 	
@@ -65,14 +76,32 @@ public class ProjectController {
 	
 	//view
 	
-	@GetMapping("/viewproject/{projectId}")
-	public String viewProject(@PathVariable("projectId")Integer projectId,Model model) {
+	@GetMapping("/viewproject")
+	public String viewProject(@RequestParam("projectId")Integer projectId,Model model) {
 		ProjectBean projectBean =projectDao.getProjectById(projectId);
 		model.addAttribute("projectBean",projectBean);
 	return "ViewProject";
 	}
 	
+	//edit
 	
+	@GetMapping("/editproject")
+	public String editProject (@RequestParam("projectId") Integer projectId,Model model){
+		
+		ProjectBean projectBean=projectDao.getProjectById(projectId);
+		model.addAttribute("projectBean",projectBean);
+	model.addAttribute("list",technologyDao.getAllTechnology());
+	model.addAttribute("listStatus",statusDao.getAllStatus());
+
+		return "EditProject";
+		
+	}
+
+	@PostMapping("/updateproject")
+	public String updateProject(ProjectBean projectBean) {
+		projectDao.updateProject(projectBean);
+		return "redirect:/listproject";
+	}
 	
 	
 

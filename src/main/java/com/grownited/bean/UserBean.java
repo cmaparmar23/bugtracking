@@ -6,6 +6,8 @@ public class UserBean {
 	 private String lastName;
 	 private String email;
 	 private String password;
+	 private String gender;
+	 private String number;
 	 
 	 private Integer role;
 	 private String otp;
@@ -51,5 +53,23 @@ public class UserBean {
 	public void setOtp(String otp) {
 		this.otp = otp;
 	}
+	
+	
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	
+	
+	
 
 }

@@ -1,18 +1,19 @@
 package com.grownited.bean;
 
 public class ProjectBean {
-	private Integer projectId;
-	private String title;
-	private String description;
-	private Integer technologyId;
-	private Integer estimatedHours;
-	private String startDate;
-	private String completionDate;
-	private Integer utilizedHours;
-	private Integer statusId;
-	private Boolean deleted;
+	 Integer projectId;
+	 String projectName;
+	 String description;
+	 Integer estimatedHours;
+	 String startDate;
+	 String completionDate;
+	 Integer utilizedHours;
+	 Integer statusId;
+	 Boolean deleted;
 	
 	String technologyName;
+	 Integer technologyId;
+
 	
 	
 	public Integer getProjectId() {
@@ -21,11 +22,13 @@ public class ProjectBean {
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
-	public String getTitle() {
-		return title;
+	
+	
+	public String getProjectName() {
+		return projectName;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 	public String getDescription() {
 		return description;

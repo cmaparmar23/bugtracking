@@ -2,16 +2,19 @@ package com.grownited.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.ModuleBean;
-import com.grownited.bean.TaskBean;
 import com.grownited.dao.ModuleDao;
+import com.grownited.dao.ProjectDao;
+import com.grownited.dao.StatusDao;
 
 @Controller
 
@@ -20,8 +23,17 @@ public class ModuleController {
 	@Autowired
 	ModuleDao moduleDao;
 	
+	@Autowired
+	ProjectDao projectDao;
+	
+	@Autowired
+	StatusDao statusDao;
+	
+	
 	@GetMapping("/newmodule")
-	public String newModule() {
+	public String newModule(Model model) {
+		model.addAttribute("listProject",projectDao.getAllProject());
+		model.addAttribute("listStatus",statusDao.getAllStatus());
 		return "NewModule";
 		
 	}
@@ -38,8 +50,8 @@ public class ModuleController {
 	
 	@GetMapping("/listmodule")
 	public String listModule(Model model) {
-		List<ModuleBean>list=moduleDao.getAllModule();
-		model.addAttribute("list",list);
+		List<ModuleBean>listModule=moduleDao.getAllModule();
+		model.addAttribute("listModule",listModule);
 		return "ListModule";
 		
 	}
@@ -50,8 +62,8 @@ public class ModuleController {
 		return "redirect:/listmodule";
 	}
 	
-	@GetMapping("/viewmodule/{moduleId}")
-	public String viewModule(@PathVariable("moduleId")Integer moduleId,Model model) {
+	@GetMapping("/viewmodule")
+	public String viewModule(@RequestParam("moduleId")Integer moduleId,Model model) {
 		ModuleBean moduleBean =moduleDao.getModuleById(moduleId);
 		model.addAttribute("moduleBean",moduleBean);
 	return "ViewModule";
