@@ -63,38 +63,16 @@ Passcode: XvH*aA0M
 	4.2)
 			
 ------------------------------------------
-<%@page import="java.util.List"%>
-<%@page import="com.grownited.bean.TechnologyBean"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Bug Tracking | New project</title>
-</head>
-<body>
+-------------------------------------------------------------------------------------------
+----------------------------------
 
-	
-<form action="saveproject" method="post">
-		
-		
-	
-		Project Title:<input type="text" name ="title"/><br><br>
-		Description:<input type="text" name ="description"/><br><br>
-		Estimated Hours:<input type="text" name ="estimatedHours"/><br><br>
-		Start Date:<input type="date" name ="startDate"/><br><br>
-		Completion Date:<input type="date" name ="completionDate"/><br><br>
-		Utilized Hours:<input type="text" name ="utilizedHours"/><br><br>
-		
-		<input type="submit" value ="save Project"/>
-		</form>
-		<br><br>
-	
-		
-		
+https://us02web.zoom.us/rec/share/QrpbzTrZXkpimIvRRGJ5mOEKCaLo36rxMiKT3REcmPrlyIsrWtJIejURbuEdLLOy.-6aCEOq5ddop__4w?startTime=1678417976000
+Passcode: f1E+KKZS		
 
-</form>
+==============================================================================================================
 
-</body>
-</html>
+
+
+select technology.te
+
+		
