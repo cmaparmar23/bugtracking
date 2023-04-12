@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" >
 <title>Bug Tracking | List Technology</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
   
@@ -83,11 +84,13 @@
                         
                           </tbody>
                     </table>
-                   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-                   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-                   <script >$(document).ready(function () {
-                	    $('#technology').DataTable();
-                   });</script>
+                    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+                    <script>$(document).ready(function () {
+                        $('#technology').DataTable();
+                    });</script>
+                    
+                  
                     
                     
                     <div class="mt-3">
@@ -119,9 +122,7 @@
 
  </div>
  
- 
- 
-<jsp:include page="AllJs.jsp"></jsp:include>
+
 
 </body>
 </html>

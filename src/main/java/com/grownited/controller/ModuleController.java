@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.ModuleBean;
+import com.grownited.bean.ProjectBean;
 import com.grownited.dao.ModuleDao;
 import com.grownited.dao.ProjectDao;
 import com.grownited.dao.StatusDao;
@@ -68,5 +69,29 @@ public class ModuleController {
 		model.addAttribute("moduleBean",moduleBean);
 	return "ViewModule";
 	}
+	
+	
+	//edit
+	
+		@GetMapping("/editmodule")
+		public String editModule (@RequestParam("moduleId") Integer moduleId,Model model){
+			
+			ModuleBean moduleBean=moduleDao.getModuleById(moduleId);
+			model.addAttribute("moduleBean",moduleBean);
+			model.addAttribute("listproject",projectDao.getAllProject());
+			model.addAttribute("listStatus",statusDao.getAllStatus());
+
+			return "EditModule";
+			
+		}
+
+		@PostMapping("/updatemodule")
+		public String updateModule(ModuleBean moduleBean) {
+			moduleDao.updateModule(moduleBean);
+			return "redirect:/listmodule";
+		}
+		
+	
+	
 
 }

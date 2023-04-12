@@ -8,9 +8,10 @@ public class UserBean {
 	 private String password;
 	 private String gender;
 	 private String number;
-	 
 	 private Integer role;
-	 private String otp;
+	 private String otp; 
+	 private String imageUrl;
+	 
 	public Integer getUserId() {
 		return userId;
 	}
@@ -67,6 +68,12 @@ public class UserBean {
 	}
 	public void setNumber(String number) {
 		this.number = number;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	

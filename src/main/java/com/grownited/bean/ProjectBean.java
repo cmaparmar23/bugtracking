@@ -13,6 +13,7 @@ public class ProjectBean {
 	
 	String technologyName;
 	 Integer technologyId;
+	 String statusName;
 
 	
 	
@@ -83,6 +84,12 @@ public class ProjectBean {
 	}
 	public void setTechnologyName(String technologyName) {
 		this.technologyName = technologyName;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 	
 	

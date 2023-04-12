@@ -122,13 +122,5 @@
 
  </div>
  
- 
- 
-
-	<jsp:include page="AllJs.jsp"></jsp:include>
-
-
-
-
 </body>
 </html>

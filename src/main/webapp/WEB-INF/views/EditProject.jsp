@@ -1,3 +1,4 @@
+<%@page import="com.grownited.bean.ProjectBean"%>
 <%@page import="com.grownited.bean.StatusBean"%>
 <%@page import="com.grownited.bean.TechnologyBean"%>
 <%@page import="java.util.List"%>
@@ -46,6 +47,7 @@
                  
                  <%
 					List<TechnologyBean> list = (List<TechnologyBean>) request.getAttribute("list");
+                 ProjectBean projectBean=(ProjectBean)request.getAttribute("projectBean");
 					%>
 					
 					
@@ -63,15 +65,16 @@
                         
                  <div class="input-group-prepend">
                   <div class="col-sm-9">
-                          <select class="btn btn-sm btn-outline-primary dropdown-toggle" name ="TechnologyId"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  value="${technologyBean.technologyName}">
-                            
+                          <select class="btn btn-sm btn-outline-primary dropdown-toggle" name ="TechnologyId"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            <option value="-1">Select Technology</option>
 
 								<%
 										for(TechnologyBean tb : list) {
 		
 	
 								%>		
-      								<option value = "<%=tb.getTechnologyId()%>">
+      								<option value = "<%=tb.getTechnologyId()%>"
+      								<%=tb.getTechnologyId()==projectBean.getTechnologyId()? "selected":"" %>>
       								<%=tb.getTechnologyName()%>  </option>
       								<%
 										}
@@ -137,11 +140,13 @@
                   <div class="col-sm-9">
                           <select  value="${statusBean.statusName }" class="btn btn-sm btn-outline-primary dropdown-toggle"   name ="StatusId"    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             
-                      
+                      <option value="-1">Select Status</option>
                      <%
 						for(StatusBean sb : listStatus) {
 					%>		
-      				<option value = "<%=sb.getStatusId()%>">
+      				<option value = "<%=sb.getStatusId()%>"
+      				
+      				<%=sb.getStatusId()==projectBean.getStatusId()? "Selected" : "" %>>
       					<%=sb.getStatusName()%>  </option>
       				<%
 						}
@@ -176,6 +181,14 @@
     </div>
     
     	<jsp:include page="AllJs.jsp"></jsp:include>
+    	<script> function validateProject(){
+    		technologyId=document.getElementById("technologyId");
+    		isError=false;
+    		if(technologyId.value=="-1"){
+    			isError=true;
+    		}
+    	}
+    	</script>
     
     </body>
     </html>

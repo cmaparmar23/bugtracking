@@ -9,7 +9,7 @@
              <h4>Bug Tracking</h4>
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="assets1/images/faces-clipart/pic-2.png" alt="profile">
+                  <img src="${user.imageUrl }" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
@@ -85,6 +85,15 @@
               </a>
             </li>
             
+            
+             <li class="nav-item">
+              <a class="nav-link" href="myprofile ">
+                <span class="menu-title">My Profile</span>
+                <i class="mdi mdi-table-large menu-icon"></i>
+              </a>
+            </li>
+            
+            
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
                 <span class="menu-title">Sample Pages</span>
@@ -105,4 +114,28 @@
           </ul>
         </nav>
         
-     
+      <script src="assets1/vendors/js/vendor.bundle.base.js"></script>
+  
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  
+  <script src="assets1/vendors/chart.js/Chart.min.js"></script>
+  <script src="assets1/js/jquery.cookie.js" type="text/javascript"></script>
+  
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  
+  <script src="assets1/js/off-canvas.js"></script> 
+  <script src="assets1/js/hoverable-collapse.js"></script>
+  <script src="assets1/js/misc.js"></script>
+  
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  
+  <script src="assets1/js/dashboard.js"></script>
+  <script src="assets1/js/todolist.js"></script>
+  
+  
+ 
+  <!-- End custom js for this page -->
+ 

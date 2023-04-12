@@ -49,5 +49,10 @@ public class ProjectUserDao {
 		return projectUserBean;
 	}
 	
+	public void updateProjectUser(ProjectUserBean projectUserBean) {
+		String updateQuery="update projectuser set projectId=?,userId=?,assignStatus=? where projectUserId=?";
+		stmt.update(updateQuery,projectUserBean.getUserId(),projectUserBean.getProjectId(),projectUserBean.getAssignStatus(),projectUserBean.getProjectUserId());
+	}
+	
 
 }

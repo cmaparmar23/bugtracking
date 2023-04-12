@@ -58,6 +58,7 @@ Completion Date:  <%= projectBean.getCompletionDate()%><br><br>
 Utilized Hours:  <%=projectBean.getUtilizedHours() %><br><br>
 Status:  <%=projectBean.getStatusId() %><br><br>
 
+
 </div>
                   
                   

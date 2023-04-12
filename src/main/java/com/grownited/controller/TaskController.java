@@ -82,6 +82,10 @@ public class TaskController {
 		
 		TaskBean taskBean=taskDao.getTaskById(taskId);
 		model.addAttribute("taskBean",taskBean);
+		model.addAttribute("listProject",projectDao.getAllProject());
+		model.addAttribute("listStatus",statusDao.getAllStatus());
+		model.addAttribute("listModule",moduleDao.getAllModule());
+		
 		return "EditTask";
 		
 	}

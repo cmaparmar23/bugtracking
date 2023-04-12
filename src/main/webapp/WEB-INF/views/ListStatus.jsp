@@ -88,14 +88,9 @@
                     <div class="mt-3">
                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="newstatus">ADD STATUS</a></i>
                   </div>
-                  
-                  
                   </div>
                 </div>
               </div>
-              
-              
-              
             </div>
           </div>
           <!-- content-wrapper ends -->
@@ -108,18 +103,6 @@
           </footer>
           <!-- partial -->
         </div>
-
-
-
  </div>
- 
- 
- 
-
-	<jsp:include page="AllJs.jsp"></jsp:include>
-
-
-
-
 </body>
 </html>

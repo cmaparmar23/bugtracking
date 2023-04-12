@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,6 +73,25 @@ public class ProjectUserController {
 		model.addAttribute("projectUserBean",projectUserBean);
 	return "ViewProjectUser";
 	}
+	
+	@GetMapping("/editprojectuser")
+	public String editProjectUser (@RequestParam("projectUserId") Integer projectUserId,Model model){
+		
+		ProjectUserBean projectUserBean=projectUserDao.getProjectUserById(projectUserId);
+		model.addAttribute("projectUserBean",projectUserBean);
+		model.addAttribute("listProject",projectDao.getAllProject());
+		model.addAttribute("listUser",userDao.getAllUser());
+
+		return "EditProjectUser";
+		
+	}
+
+	@PostMapping("/updateprojectuser")
+	public String updateProjectUser(ProjectUserBean projectUserBean) {
+		projectUserDao.updateProjectUser(projectUserBean);
+		return "redirect:/listprojectuser";
+	}
+	
 	
 	
 	

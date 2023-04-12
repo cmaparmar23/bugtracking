@@ -68,8 +68,13 @@
 							<td><%=pub.getAssignStatus() %></td>
 		
 	
-							<td><a href="deleteprojectuser/<%=pub.getProjectUserId() %>">Delete</a>|
-							<a href="viewprojectuser?projectUserId=<%=pub.getProjectUserId()%>">View</a></td>
+							<td>
+							<a href="viewprojectuser?projectUserId=<%=pub.getProjectUserId()%>"><i class="mdi mdi-eye"></i></a>
+							|
+							<a href="editprojectuser?projectUserId=<%=pub.getProjectUserId()%>"><i class="mdi mdi-pencil"></i></a>
+							|
+							<a href="deleteprojectuser/<%=pub.getProjectUserId() %>"><i class="mdi mdi-delete"></i></a>
+							</td>
 					</tr>
 	
                         <%
@@ -117,7 +122,7 @@
  
  
 
-	<jsp:include page="AllJs.jsp"></jsp:include>
+	
 
 
 </body>

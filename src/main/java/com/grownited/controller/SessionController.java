@@ -104,6 +104,7 @@ public class SessionController {
 				
 				//session 
 				session.setAttribute("userId", userBean.getUserId());
+				session.setAttribute("user", userBean);
 				
 				//max inactive interval time 
 				session.setMaxInactiveInterval(60*5);//second  
@@ -121,8 +122,13 @@ public class SessionController {
 					return"Home";
 				}
 					
-					
-				else {
+				else if(userBean.getRole()==3)
+				//devloper
+			
+				{
+						return"Home";
+				}	
+			else {
 					return "404";
 				}
 
@@ -132,11 +138,11 @@ public class SessionController {
 		
 		}
 		
-		@GetMapping("/")
+		/*@GetMapping("/")
 		public String root() {
 			return"Login";
 			
-		}
+		}*/
 		
 		
 		

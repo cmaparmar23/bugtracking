@@ -52,6 +52,7 @@
 						<th>TechnologyId</th>
 						<th>technology Name</th>
 						<th>Status Id </th>
+				
 						<th>Action</th>
                        
                         </tr>
@@ -67,6 +68,7 @@
 									<td><%=pb.getTechnologyId() %></td>
 									<td><%=pb.getTechnologyName() %></td>
 									<td><%=pb.getStatusId() %></td>
+									
 	
 	
 								<td><a href="viewproject?projectId=<%=pb.getProjectId()%>"><i class="mdi mdi-eye"></i></a>
@@ -85,10 +87,9 @@
                         
                           </tbody>
                     </table>
-                    
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-                   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-                   <script >$(document).ready(function () {
+                    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+                   <script>$(document).ready(function () {
                 	    $('#project').DataTable();
                    });</script>
                     
@@ -120,12 +121,7 @@
 
 
  </div>
- 
- <jsp:include page="AllJs.jsp"></jsp:include>
- 
- 
- 
-
+  
 
 
 </body>

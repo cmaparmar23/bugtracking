@@ -65,8 +65,11 @@
 									<td><%=mb.getProjectId() %></td>
 									<td><%=mb.getStatusId() %></td>
 									<td><%=mb.getDocumentUrl() %></td>
-									<td><a href="deletemodule<%=mb.getModuleId() %>">Delete</a>|
-										<a href="viewmodule?moduleId=<%=mb.getModuleId()%>">View</a></td>
+									<td>
+									<a href="viewmodule?moduleId=<%=mb.getModuleId()%>"><i class="mdi mdi-eye"></i></a>|
+									<a href="editmodule?moduleId=<%=mb.getModuleId()%>"><i class="mdi mdi-pencil"></i></a>|
+									<a href="deletemodule/<%=mb.getModuleId() %>"><i class="mdi mdi-delete"></i></a>
+									</td>
                         </tr>
                         
                         <%
@@ -111,7 +114,7 @@
 
 
  </div>
- <jsp:include page="AllJs.jsp"></jsp:include>
+
 
 
 </body>
