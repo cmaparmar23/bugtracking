@@ -1,2 +1,102 @@
+
+
+
+create table technology(
+technologyId integer primary key auto_increment,
+technologyName varchar(30),
+deleted tinyint
+);
 ----------------------------------------------------------------------
-select technologyName,projectName from technology,project;
+create table project(
+projectId integer primary key auto_increment,
+projectName varchar(30),
+ description  varchar(50),  
+ technologyId  integer,
+ estimatedHours integer,
+ startDate     varchar(30),
+ completionDate varchar(30),
+ utilizedHours integer,
+ statusId       integer,
+ deleted integer
+ );
+
+alter table project add constraint foreign key (technologyId) references technology(technologyId);
+alter table project add constraint foreign key (statusId) references status(statusId);
+
+
+
+--------------------------------------------------------------------------
+ create table status(
+    -> statusId integer primary key auto_increment,
+    -> statusName varchar(50)
+    -> );
+    
+ ---------------------------------------------------------------
+ 
+create table task(
+taskId integer primary key auto_increment,
+taskName varchar(50),
+projectId  integer ,
+estimatedHours integer,
+totalUtilizedHours integer,
+documentUrl varchar(50),
+description varchar(50)
+);
+
+
+alter table task add constraint foreign key (projectId) references project(projectId);
+
+--------------------------------------------------------------------------------------
+
+create table module(
+moduleId integer primary key auto_increment,
+moduleName varchar(50),
+projectId integer,
+statusId integer,
+estimatedHours integer,
+totalUtilizedHours integer,
+documentUrl varchar(50),
+description varchar(50)
+);
+
+
+alter table module add constraint foreign key(projectId) references project(projectId);
+alter table module add constraint foreign key(statusId) references status(statusId);
+---------------------------------------------------------------------------------------------------------
+
+create table projectuser(
+projectUserId integer primary key auto_increment,
+userId integer,
+projectId integer,
+assignStatus integer
+);
+
+alter table projectuser add constraint foreign key(projectId) references project(projectId);
+alter table projectuser add constraint foreign key(userId) references users(userId);
+
+
+---------------------------------------------------------------------------------------------------
+
+create table taskuser(
+taskUserId integer primary key auto_increment,
+userId integer,
+taskId integer,
+assignStatus integer,
+statusId integer,
+utilizedHours integer
+);
+
+
+alter table tasktuser add constraint foreign key(userId) references users(userId);
+alter table taskuser add constraint foreign key(statusId) references status(statusId);
+alter table taskuser add constraint foreign key(tasId) references task(taskId);
+
+
+
+
+
+
+
+
+=============================================================
+alter table users add column imageUrl varchar(1024);
