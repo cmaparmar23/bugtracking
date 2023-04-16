@@ -119,14 +119,14 @@ public class SessionController {
 					//projectmanager
 				
 				{
-					return"Home";
+					return "redirect:/projectmanagerdashboard";
 				}
 					
 				else if(userBean.getRole()==3)
 				//devloper
 			
 				{
-						return"Home";
+						return"redirect:/developerdashboard";
 				}	
 			else {
 					return "404";

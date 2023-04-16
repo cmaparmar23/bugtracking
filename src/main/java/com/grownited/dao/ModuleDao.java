@@ -57,6 +57,6 @@ JdbcTemplate stmt;
 	
 	public void updateModule(ModuleBean moduleBean) {
 		String updateQuery="update module set moduleName=? ,projectId = ?, statusId=?,estimatedHours=?,totalUtilizedHours=?,documentUrl=?,description =? where moduleId=?";
-		stmt.update(updateQuery,moduleBean.getModuleName(),moduleBean.getProjectId(),moduleBean.getStatusId(),moduleBean.getEstimatedHours(),moduleBean.getTotalUtilizedHours(),moduleBean.getDocumentUrl(),moduleBean.getDescription());
+		stmt.update(updateQuery,moduleBean.getModuleName(),moduleBean.getProjectId(),moduleBean.getStatusId(),moduleBean.getEstimatedHours(),moduleBean.getTotalUtilizedHours(),moduleBean.getDocumentUrl(),moduleBean.getDescription(),moduleBean.getModuleId());
 	}
 }

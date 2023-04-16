@@ -8,18 +8,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Bug Tracking | Update Module</title>
+<title>Bug Tracking | Edit Module</title>
 
 <jsp:include page="AllCss.jsp"></jsp:include>
 
 </head>
 <body>
-
-
-
-<body>
-
-
 
 <jsp:include page="NavBar.jsp"></jsp:include>
 
@@ -30,7 +24,7 @@
 <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Update Module  </h3>
+              <h3 class="page-title">Edit Module  </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
@@ -87,7 +81,8 @@
 		
 	
 								%>		
-      								<option value = "<%=pb.getProjectId()%>">
+      								<option value = "<%=pb.getProjectId()%>"
+      								<%=pb.getProjectId()==moduleBean.getProjectId()? "selected" :"" %>>
       								<%=pb.getProjectName()%>  </option>
       								<%
 										}
@@ -112,7 +107,10 @@
 		
 	
 								%>		
-      								<option value = "<%=sb.getStatusId()%>">
+      								<option value = "<%=sb.getStatusId()%>"
+      							<%=sb.getStatusId()==moduleBean.getStatusId()? "selected" :"" %>>
+      								
+      							
       								<%=sb.getStatusName()%>  </option>
       								<%
 										}
@@ -153,12 +151,7 @@
                           <input type="text" class="form-control" name="description" value="${moduleBean.description}">
                         </div>
                       </div>
-                      
-                      
-                   
-                      
-   
-                     
+                    
                       <button type="submit" class="btn btn-gradient-primary me-2">Update Module</button>
                   	 <button class="btn btn-gradient-primary me-2" href="listmodule">Cancel</button>
                   		

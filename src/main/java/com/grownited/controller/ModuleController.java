@@ -78,8 +78,8 @@ public class ModuleController {
 			
 			ModuleBean moduleBean=moduleDao.getModuleById(moduleId);
 			model.addAttribute("moduleBean",moduleBean);
-			model.addAttribute("listproject",projectDao.getAllProject());
-			model.addAttribute("listStatus",statusDao.getAllStatus());
+		model.addAttribute("listProject",projectDao.getAllProject());
+	model.addAttribute("listStatus",statusDao.getAllStatus());
 
 			return "EditModule";
 			

@@ -55,7 +55,7 @@ public class TaskDao {
 	//update
 	
 	public void updateTask (TaskBean taskBean) {
-		String updateQuery="update task set taskName=? ,projectId=?,statusId=?,moduleId=?,estimatedHours=?,totalUtilizedHours=?,documentUrl=?,description where taskId=?";
+		String updateQuery="update task set taskName=? , projectId=? ,statusId=? ,moduleId=? ,estimatedHours=? ,totalUtilizedHours=? ,documentUrl=? ,description=? where taskId=?";
 		stmt.update(updateQuery,taskBean.getTaskName(),taskBean.getProjectId(),taskBean.getStatusId(),taskBean.getModuleId(),taskBean.getEstimatedHours(),taskBean.getTotalUtilizedHours(),taskBean.getDocumentUrl(),taskBean.getDescription(),taskBean.getTaskId());
 		
 	}

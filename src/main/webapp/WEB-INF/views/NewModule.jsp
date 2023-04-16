@@ -77,6 +77,7 @@
                   <div class="col-sm-9">
                           <select class="btn btn-sm btn-outline-primary dropdown-toggle" name ="ProjectId"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             
+                            <option value="-1">Select Project</option>
 
 								<%
 										for(ProjectBean pb : listProject) {
@@ -101,6 +102,7 @@
                  <div class="input-group-prepend">
                   <div class="col-sm-9">
                           <select class="btn btn-sm btn-outline-primary dropdown-toggle" name ="StatusId"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <option value="-1">Select Status</option>
                             
 
 								<%
