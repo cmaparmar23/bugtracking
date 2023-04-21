@@ -9,7 +9,7 @@
              <h4>Bug Tracking</h4>
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="${user.imageUrl }" alt="profile">
+                  <img src="${user.imageUrl}" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>

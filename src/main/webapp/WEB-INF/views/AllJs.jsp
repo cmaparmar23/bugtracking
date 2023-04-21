@@ -18,6 +18,8 @@
   
   <script src="assets1/js/dashboard.js"></script>
   <script src="assets1/js/todolist.js"></script>
+    <script src="assets1/vendor/simple-datatables/simple-datatables.js"></script>
+  
   
   
  

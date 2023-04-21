@@ -96,9 +96,9 @@
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
                     <img src="assets1/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h4 class="font-weight-normal mb-3">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Total Pending Project<i class="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">$ 15,0000</h2>
+                    <h2 class="mb-5">${totalPendingProject}</h2>
                     <h6 class="card-text">Increased by 60%</h6>
                   </div>
                 </div>
@@ -107,9 +107,9 @@
                 <div class="card bg-gradient-info card-img-holder text-white">
                   <div class="card-body">
                     <img src="assets1/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Total On Going<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">45,6334</h2>
+                    <h2 class="mb-5">${totalInProgessProject}</h2>
                     <h6 class="card-text">Decreased by 10%</h6>
                   </div>
                 </div>
@@ -118,39 +118,69 @@
                 <div class="card bg-gradient-success card-img-holder text-white">
                   <div class="card-body">
                     <img src="assets1/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
-                    <h4 class="font-weight-normal mb-3">Visitors Online <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Total Delayed Project<i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5">95,5741</h2>
+                    <h2 class="mb-5">${totalDelayedProject}</h2>
                     <h6 class="card-text">Increased by 5%</h6>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-7 grid-margin stretch-card">
+           <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <div class="clearfix">
-                      <h4 class="card-title float-left">Visit And Sales Statistics</h4>
-                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"><ul><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1))"></span>CHN</li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>USA</li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>UK</li></ul></div>
-                    </div>
-                    <canvas id="visit-sale-chart" class="mt-4 chartjs-render-monitor" style="display: block; width: 497px; height: 248px;" width="497" height="248"></canvas>
+                    <h4 class="card-title">Bar chart</h4>
+                    <canvas id="barChart" style="height: 204px; display: block; width: 409px;" width="409" height="204" class="chartjs-render-monitor"></canvas>
                   </div>
                 </div>
               </div>
-              <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <h4 class="card-title">Traffic Sources</h4>
-                    <canvas id="traffic-chart" width="320" height="160" style="display: block; width: 320px; height: 160px;" class="chartjs-render-monitor"></canvas>
-                    <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"><ul><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>Search Engines<span class="float-right">30%</span></li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))"></span>Direct Click<span class="float-right">30%</span></li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>Bookmarks Click<span class="float-right">40%</span></li></ul></div>
-                  </div>
-                </div>
-              </div>
+             
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#barChart'), {
+                    type: 'bar',
+                    data: {
+                      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                      datasets: [{
+                        label: 'Bar Chart',
+                        data: [65, 59, 80, 81, 56, 55, 40],
+                        backgroundColor: [
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(255, 159, 64, 0.2)',
+                          'rgba(255, 205, 86, 0.2)',
+                          'rgba(75, 192, 192, 0.2)',
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(153, 102, 255, 0.2)',
+                          'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(255, 159, 64)',
+                          'rgb(255, 205, 86)',
+                          'rgb(75, 192, 192)',
+                          'rgb(54, 162, 235)',
+                          'rgb(153, 102, 255)',
+                          'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                });
+              </script>
             
+           
             
-            
+                
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

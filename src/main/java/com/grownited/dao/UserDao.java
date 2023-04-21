@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.grownited.bean.ForgetPasswordBean;
 import com.grownited.bean.LoginBean;
 import com.grownited.bean.ProjectUserBean;
+import com.grownited.bean.TechnologyBean;
 import com.grownited.bean.UpdatePasswordBean;
 import com.grownited.bean.UserBean;
 
@@ -117,6 +118,22 @@ public List<UserBean>getAllUser(){
 		List<UserBean>listUser=stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
 		return listUser;
 	}
+public UserBean getUserById(Integer userId) {
+	UserBean userBean=null;
+	try {
+		userBean=stmt.queryForObject("select * from users where userId=?",
+				new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] {userId});
+		
+	}
+	catch(Exception e) {
+		System.out.println("UserDao::getUserById()");
+		System.out.println(e.getMessage());
+	}
+	return userBean;
+}
+
+
+
 }	
 	
 	

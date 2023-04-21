@@ -12,6 +12,7 @@ public class UserBean {
 	 private String otp; 
 	 private String imageUrl;
 	 
+	 
 	public Integer getUserId() {
 		return userId;
 	}
@@ -55,8 +56,6 @@ public class UserBean {
 		this.otp = otp;
 	}
 	
-	
-	
 	public String getGender() {
 		return gender;
 	}
@@ -78,5 +77,6 @@ public class UserBean {
 	
 	
 	
-
+	
+	
 }
