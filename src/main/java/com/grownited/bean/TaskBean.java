@@ -9,6 +9,8 @@ public class TaskBean {
 	private String documentUrl;
 	private String description;
 	private String projectName;
+	private String statusName;
+	private String moduleName;
 	
 	public Integer getTaskId() {
 		return taskId;
@@ -71,6 +73,19 @@ public class TaskBean {
 	public void setModuleId(Integer moduleId) {
 		this.moduleId = moduleId;
 	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	public String getModuleName() {
+		return moduleName;
+	}
+	public void setModuleName(String moduleName) {
+		this.moduleName = moduleName;
+	}
+	
 	
 	
 	

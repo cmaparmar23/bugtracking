@@ -9,6 +9,10 @@ public class ModuleBean {
 	private Integer totalUtilizedHours;
 	private String documentUrl;
 	private String  description;
+	
+	private String projectName;
+	private String statusName;
+	
 	public Integer getModuleId() {
 		return moduleId;
 	}
@@ -56,6 +60,18 @@ public class ModuleBean {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 	
 	

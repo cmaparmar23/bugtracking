@@ -198,7 +198,7 @@ public class SessionController {
 			//otp==dbOtp
 			
 			UserBean user=userDao.verifyOtpByEmail(upBean);
-			if(user==null) {
+			if(user == null) {
 				return "UpdatePassword";
 				
 			}else {

@@ -48,9 +48,12 @@
                         <tr>
                        <th>TaskId</th>
 						<th>TaskName</th>
-						<th>ModuleId</th>
-						<th>ProjectId</th>
-						<th>StatusId</th>
+						
+						<th>ModuleName</th>
+						
+						<th>ProjectName</th>
+					
+						<th>Status</th>
 						<th>Document URL</th>
 						<th>Action</th>
                         </tr>
@@ -64,9 +67,9 @@
                         <tr>
                         			 <td><%=tb.getTaskId() %></td>
 									<td><%=tb.getTaskName() %></td>
-									<td><%=tb.getModuleId() %></td>
-									<td><%=tb.getProjectId() %></td>
-									<td><%=tb.getStatusId() %></td>
+									<td><%=tb.getModuleName() %></td>
+									<td><%=tb.getProjectName() %></td>
+									<td><%=tb.getStatusName() %></td>
 									<td><%=tb.getDocumentUrl() %></td>
 									
 									

@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.grownited.bean.ModuleBean;
 import com.grownited.bean.TaskUserBean;
 
 @Repository
@@ -24,9 +25,9 @@ public class TaskUserDao {
 	
 	public List<TaskUserBean>getAllTaskUser(){
 		
-		String selectQuery= "select  *from taskUser"; 
-		List<TaskUserBean>listTaskUser=stmt.query(selectQuery, new BeanPropertyRowMapper<TaskUserBean>(TaskUserBean.class));
-		return listTaskUser;
+		String joinQuery="select u.firstName,s.statusName,t.taskName,tu.taskUserId,tu.userId,tu.statusId,tu.taskId,tu.assignStatus,tu.utilizedHours from users u,task t,status s ,taskUser tu where tu.userId=u.userId and tu.statusId=s.statusId and tu.taskId=t.taskId";
+		return stmt.query(joinQuery,new BeanPropertyRowMapper<TaskUserBean>(TaskUserBean.class));
+
 	}
 	
 	public void deleteTaskUser(Integer taskUserId) {

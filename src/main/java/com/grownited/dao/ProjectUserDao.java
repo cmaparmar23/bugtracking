@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.grownited.bean.ModuleBean;
 import com.grownited.bean.ProjectUserBean;
 
 @Repository
@@ -21,10 +22,11 @@ public class ProjectUserDao {
 	}
 	
 	public List<ProjectUserBean>getAllProjectUser(){
+		String joinQuery="select u.firstName,p.projectName,pu.projectUserId,pu.userId,pu.projectId,pu.assignStatus from project p,users u,projectuser pu where pu.userId=u.userId and pu.projectId=p.projectId";
+		return stmt.query(joinQuery,new BeanPropertyRowMapper<ProjectUserBean>(ProjectUserBean.class));
+
 		
-		String selectQuery= "select  *from projectUser"; 
-		List<ProjectUserBean>listProjectUser=stmt.query(selectQuery, new BeanPropertyRowMapper<ProjectUserBean>(ProjectUserBean.class));
-		return listProjectUser;
+		
 	}
 	
 	public void deleteProjectUser(Integer projectUserId) {

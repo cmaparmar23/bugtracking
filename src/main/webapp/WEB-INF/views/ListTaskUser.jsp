@@ -50,10 +50,13 @@
                       <thead>
                         <tr>
                        	<th>TaskUserId</th>
-						<th>UserId</th>
-						<th>TaskId</th>
+					
+						<th>User Name</th>
+						
+						<th>Task Name</th>
 						<th>Assign Status</th>
-						<th>StatusId</th>
+						
+						<th>Status</th>
 						<th>Utilized Hours</th>
 						<th>Action</th>
                         </tr>
@@ -66,10 +69,13 @@
                       
                         <tr>
 							<td><%=tub.getTaskUserId() %></td>
-							<td><%=tub.getUserId() %></td>
-							<td><%=tub.getTaskId() %></td>
+				
+							<td><%=tub.getFirstName() %></td>
+						
+							<td><%=tub.getTaskName() %></td>
 							<td><%=tub.getAssignStatus() %></td>
-							<td><%=tub.getStatusId() %></td>
+						
+							<td><%=tub.getStatusName() %></td>
 							<td><%=tub.getUtilizedHours() %></td>
 		
 							<td><a href="deletetaskuser/<%=tub.getTaskUserId() %>">Delete</a>|

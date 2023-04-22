@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
+import com.grownited.bean.ModuleBean;
 import com.grownited.bean.TaskBean;
 
 @Repository
@@ -23,10 +23,11 @@ public class TaskDao {
 	}
 	
 	public List<TaskBean> getAllTask() {
+		String joinQuery="select m.moduleName,p.projectName,s.statusName,t.taskId,t.taskName,t.moduleId,t.projectId,t.statusId from task t,module m, project p,status s  where t.moduleId=m.moduleId and t.projectId=p.projectId and t.statusId=s.statusId ";
+		return stmt.query(joinQuery,new BeanPropertyRowMapper<TaskBean>(TaskBean.class));
+
 		
-		String selectQuery="select * from task";
-		List<TaskBean>listTask=stmt.query(selectQuery, new BeanPropertyRowMapper<TaskBean>(TaskBean.class));
-		return listTask;
+		
 		
 	}
 	

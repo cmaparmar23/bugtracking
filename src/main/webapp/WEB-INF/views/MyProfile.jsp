@@ -74,7 +74,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="${user.imageUrl}" alt="Profile" class="rounded-circle">
+              <img src="${user.imageUrl }" alt="Profile" class="rounded-circle">
               <h2>${user.firstName}</h2>
               <h3>${user.role==1?"Admin":"Customer"}</h3>
               

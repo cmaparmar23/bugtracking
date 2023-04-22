@@ -8,6 +8,10 @@ public class TaskUserBean {
 	private Integer assignStatus ;
 	private Integer statusId;      
 	private Integer utilizedHours;
+	
+	private String firstName;
+	private String taskName;
+	private String statusName;
 	public Integer getTaskUserId() {
 		return taskUserId;
 	}
@@ -44,5 +48,24 @@ public class TaskUserBean {
 	public void setUtilizedHours(Integer utilizedHours) {
 		this.utilizedHours = utilizedHours;
 	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getTaskName() {
+		return taskName;
+	}
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	
 
 }

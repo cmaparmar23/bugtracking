@@ -17,14 +17,14 @@ public class ProjectDao {
 	@Autowired
 	JdbcTemplate stmt;
 	public void addProject(ProjectBean projectBean) {
-		String insertQuery="insert into project(projectName,description,Id,estimatedHours,startDate,completionDate,utilizedHours,statusId,deleted) values(?,?,?,?,?,?,?,?,?)";
+		String insertQuery="insert into project(projectName,description,technologyId,estimatedHours,startDate,completionDate,utilizedHours,statusId,deleted) values(?,?,?,?,?,?,?,?,?)";
 		
-		stmt.update(insertQuery,projectBean.getProjectName(),projectBean.getDescription(),projectBean.getProjectId(),projectBean.getEstimatedHours(),projectBean.getStartDate(),projectBean.getCompletionDate(),projectBean.getUtilizedHours(),projectBean.getStatusId(),false);
+		stmt.update(insertQuery,projectBean.getProjectName(),projectBean.getDescription(),projectBean.getTechnologyId(),projectBean.getEstimatedHours(),projectBean.getStartDate(),projectBean.getCompletionDate(),projectBean.getUtilizedHours(),projectBean.getStatusId(),false);
 	}
 	
 	public List<ProjectBean>getAllProject(){
 		
-		String joinQuery = "select t.technologyName , p.technologyId,p.projectId,p.projectName,p.deleted ,p.statusId from technology t , project p where t.technologyId = p.technologyId and p.deleted = false";
+		String joinQuery = "select t.technologyName ,s.statusName, p.technologyId,p.projectId,p.projectName,p.deleted ,p.statusId from technology t , project p , status s where t.technologyId = p.technologyId and p.statusId=s.statusId";
 		return stmt.query(joinQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
 	
 	

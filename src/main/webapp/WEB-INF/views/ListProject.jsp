@@ -51,7 +51,7 @@
 						<th>Project Name</th>
 						<th>TechnologyId</th>
 						<th>technology Name</th>
-						<th>Status Id </th>
+						<th>Status</th>
 				
 						<th>Action</th>
                        
@@ -67,7 +67,7 @@
 									<td><%=pb.getProjectName()%></td>
 									<td><%=pb.getTechnologyId() %></td>
 									<td><%=pb.getTechnologyName() %></td>
-									<td><%=pb.getStatusId() %></td>
+									<td><%=pb.getStatusName() %></td>
 									
 	
 	

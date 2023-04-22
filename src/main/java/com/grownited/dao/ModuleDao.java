@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.ModuleBean;
+import com.grownited.bean.ProjectBean;
 import com.grownited.bean.TaskBean;
 
 @Repository
@@ -26,9 +27,9 @@ JdbcTemplate stmt;
  //list
  
  public List<ModuleBean>getAllModule(){
-	 String selectQuery="select * from module";
-	 List<ModuleBean>listModule=stmt.query(selectQuery, new BeanPropertyRowMapper<ModuleBean>(ModuleBean.class));
-	 return listModule;
+	 	String joinQuery="select p.projectName,s.statusName,m.projectId, m.moduleName,m.moduleId,m.statusId,m.documentUrl from module m, project p, status s where p.projectId=m.projectId and m.statusId=s.statusId";
+		return stmt.query(joinQuery,new BeanPropertyRowMapper<ModuleBean>(ModuleBean.class));
+
 	 
 	 
  }

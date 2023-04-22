@@ -52,11 +52,14 @@ Project Id: <%=projectBean.getProjectId() %><br><br>
 Title:  <%=projectBean.getProjectName() %><br><br>
 Description:  <%=projectBean.getDescription() %><br><br>
 Technology Id:  <%=projectBean.getTechnologyId()%><br><br>
+Technology Name:   <%=projectBean.getTechnologyName() %><br><br>
 Estimated Hours:  <%=projectBean.getEstimatedHours() %><br><br>
 Start Date:  <%=projectBean.getStartDate()%><br><br>
 Completion Date:  <%= projectBean.getCompletionDate()%><br><br>
 Utilized Hours:  <%=projectBean.getUtilizedHours() %><br><br>
-Status:  <%=projectBean.getStatusId() %><br><br>
+StatusID:  <%=projectBean.getStatusName() %><br><br>
+Status:   <%=projectBean.getStatusName() %><br><br>
+
 
 
 </div>

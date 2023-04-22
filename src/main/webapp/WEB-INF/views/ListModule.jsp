@@ -48,7 +48,9 @@
                        <th>ModukeId</th>
 						<th>ModuleName</th>
 						<th>ProjectId</th>
+						<th>Project Name</th>
 						<th>StatusId</th>
+						<th>Status</th>
 						<th>Document URL</th>
 						<th>Action</th>
                         </tr>
@@ -63,7 +65,9 @@
                         			 <td><%=mb.getModuleId() %></td>
 									<td><%=mb.getModuleName() %></td>
 									<td><%=mb.getProjectId() %></td>
+									<td><%=mb.getProjectName() %></td>
 									<td><%=mb.getStatusId() %></td>
+									<td><%=mb.getStatusName() %></td>
 									<td><%=mb.getDocumentUrl() %></td>
 									<td>
 									<a href="viewmodule?moduleId=<%=mb.getModuleId()%>"><i class="mdi mdi-eye"></i></a>

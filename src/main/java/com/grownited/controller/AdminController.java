@@ -7,6 +7,8 @@ import java.io.File;
 
 
 
+
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,13 +43,13 @@ public class AdminController {
 			
 			//total project
 			Integer totalInProgessProject=adminDao.getInProgerssProject();
-			Integer totalPendingProject=adminDao.getPendingProject();
+			Integer totalCompleted=adminDao.getCompleted();
 			Integer totalDelayedProject=adminDao.getTotalDelayedProject();
 			
 			
 			
 			model.addAttribute("totalInProgessProject",totalInProgessProject);
-			model.addAttribute("totalPendingProject",totalPendingProject);
+			model.addAttribute("totalCompleted",totalCompleted);
 			model.addAttribute("totalDelayedProject",totalDelayedProject);
 			
 			return"AdminDashboard";
@@ -73,7 +75,7 @@ public class AdminController {
 			File file=new File(userDir,profileBean.getProfileImg().getOriginalFilename());
 			FileUtils.writeByteArrayToFile(file,profileBean.getProfileImg().getBytes());
 		
-			profileBean.setImageUrl("assets1/profile"+profileBean.getUserId()+"/"+profileBean.getProfileImg().getOriginalFilename());
+			profileBean.setImageUrl("assets1/profile/"+profileBean.getUserId()+"/"+profileBean.getProfileImg().getOriginalFilename());
 			adminDao.updateImageUrl(profileBean);
 			}catch(Exception e) {
 				

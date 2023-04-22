@@ -50,7 +50,9 @@
                         <tr>
                        <th>ProjectUserId</th>
 						<th>UserId</th>
+						<th>User Name</th>
 						<th>ProjectId</th>
+						<th>Project Name</th>
 						<th>Assign Status</th>
 						<th>Action</th>
                         </tr>
@@ -64,7 +66,9 @@
                        <tr>
 							<td><%=pub.getProjectUserId() %></td>
 							<td><%=pub.getUserId() %></td>
+							<td><%=pub.getFirstName() %></td>
 							<td><%=pub.getProjectId() %></td>
+							<td><%=pub.getProjectName() %></td>
 							<td><%=pub.getAssignStatus() %></td>
 		
 	

@@ -26,12 +26,12 @@ public class AdminDao {
 		return stmt.queryForObject(countQuery, Integer.class);
 	}
 	
-	public Integer getPendingProject() {
-		String countQuery="select count(*) from project where statusId=2";
+	public Integer getCompleted(){
+		String countQuery="select count(*) from project where statusId=1";
 		return  stmt.queryForObject(countQuery, Integer.class);
 	}
 	public Integer getTotalDelayedProject() {
-		String countQuery="select count(*) from project where statusId=3 ";
+		String countQuery="select count(*) from project where statusId=3  and completionDate ";
 
 		Calendar c = Calendar.getInstance();
 
