@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grownited.bean.ProjectUserBean;
 import com.grownited.bean.TaskUserBean;
 import com.grownited.dao.StatusDao;
 import com.grownited.dao.TaskDao;
@@ -76,6 +77,28 @@ public class TaskUserController {
 		TaskUserBean taskUserBean =taskUserDao.getTaskUserById(taskUserId);
 		model.addAttribute("taskUserBean",taskUserBean);
 	return "ViewTaskUser";
+	
+	
+	}
+	
+	//edit
+	
+	@GetMapping("/edittaskuser")
+	public String editTaskUser (@RequestParam("taskUserId") Integer taskUserId,Model model){
+		
+		TaskUserBean taskUserBean=taskUserDao.getTaskUserById(taskUserId);
+		model.addAttribute("taskUserBean",taskUserBean);
+		model.addAttribute("listTask",taskDao.getAllTask());
+		model.addAttribute("listUser",userDao.getAllUser());
+		model.addAttribute("listStatus",statusDao.getAllStatus());
+		return "EditTaskUser";
+		
+	}
+
+	@PostMapping("/updatetaskuser")
+	public String updateTaskUser(TaskUserBean taskUserBean) {
+		taskUserDao.updateTaskUser(taskUserBean);
+		return "redirect:/listtaskuser";
 	}
 	
 	

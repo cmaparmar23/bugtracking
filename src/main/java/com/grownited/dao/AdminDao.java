@@ -1,9 +1,10 @@
 package com.grownited.dao;
 
-import java.util.Calendar;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -33,27 +34,14 @@ public class AdminDao {
 	public Integer getTotalDelayedProject() {
 		String countQuery="select count(*) from project where statusId=3  and completionDate ";
 
-		Calendar c = Calendar.getInstance();
-
-		int ddd = c.get(Calendar.DATE);
-		int mmm = c.get(Calendar.MONTH) + 1;
-		int yyy = c.get(Calendar.YEAR);
-
-		String today = "";
-
-		if (mmm < 10) {
-			today = ddd + "-0" + mmm + "-" + yyy;
-		} else {
-			today = ddd + "-" + mmm + "-" + yyy;
-		}
-		System.out.println("TODAY => " + today);
+		
 		return stmt.queryForObject(countQuery,Integer.class);
 		
 	}
 	
 	public List<UtilizedHoursChartBean>getProjectStats(){
-		String selectQ="select ";
-		return"";
+		String selectQ="select projectName,utilizedHours from project ";
+		return stmt.query(selectQ, new  BeanPropertyRowMapper<UtilizedHoursChartBean>(UtilizedHoursChartBean.class));
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.grownited.controller;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,7 @@ import org.springframework.ui.Model;
 
 import com.grownited.bean.ForgetPasswordBean;
 import com.grownited.bean.LoginBean;
+import com.grownited.bean.TechnologyBean;
 import com.grownited.bean.UpdatePasswordBean;
 import com.grownited.bean.UserBean;
 import com.grownited.dao.UserDao;
@@ -24,6 +27,7 @@ import com.grownited.util.OtpGenetator;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //annotation
 @Controller
@@ -215,12 +219,43 @@ public class SessionController {
 			return "redirect:/login";
 		}
 		
+		@GetMapping("/listuser")
+		public String listUser(Model model) {
+			
+			//pull all category from db-table
+			List<UserBean> listUser=userDao.getAllUser();
+			model.addAttribute("listUser",listUser);
+			return "ListUser";
+		}
 		
 		
+		@GetMapping("/viewuser")
+		public String viewUser(@RequestParam("userId")Integer userId,Model model) {
+		UserBean userBean =userDao.getUserById(userId);
+			model.addAttribute("userBean",userBean);
+		return "ViewUser";
+		}
 		
+		
+		@GetMapping("/edituser")
+		public String editUser (@RequestParam("userId")Integer userId,Model model){
+			
+			UserBean userBean=userDao.getUserById(userId);
+			model.addAttribute("userBean",userBean);
+			return "EditUser";
+			
+		}
+
+		@PostMapping("/updateuser")
+		public String updateUser(UserBean userBean) {
+			userDao.updateUser(userBean);
+			return "redirect:/listuser";
+		}
+}
 
 		
-}
+		
+	
 
 
 

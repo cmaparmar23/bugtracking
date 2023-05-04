@@ -35,7 +35,7 @@
             
             
             <li class="nav-item">
-              <a class="nav-link" href="listproject">
+              <a class="nav-link" href="p_listproject">
                 <span class="menu-title">Project</span>
           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -45,8 +45,8 @@
           
             
              <li class="nav-item">
-              <a class="nav-link" href="listtask">
-                <span class="menu-title">Task</span>
+              <a class="nav-link" href="">
+                <span class="menu-title">Module</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
             </li>
@@ -54,20 +54,14 @@
              
             
              <li class="nav-item">
-              <a class="nav-link" href="listprojectuser">
-                <span class="menu-title">Project User</span>
+              <a class="nav-link" href="">
+                <span class="menu-title">Task</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
             </li>
             
             
             
-             <li class="nav-item">
-              <a class="nav-link" href="listtaskuser">
-                <span class="menu-title">Task User</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-            </li>
             
             
              <li class="nav-item">

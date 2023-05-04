@@ -1,13 +1,7 @@
 package com.grownited.controller;
 
 import java.io.File;
-
-
-
-
-
-
-
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.grownited.bean.ProfileBean;
 import com.grownited.bean.TechnologyBean;
 import com.grownited.bean.UserBean;
+import com.grownited.bean.UtilizedHoursChartBean;
 import com.grownited.dao.AdminDao;
 import com.grownited.dao.UserDao;
 
@@ -45,13 +40,14 @@ public class AdminController {
 			Integer totalInProgessProject=adminDao.getInProgerssProject();
 			Integer totalCompleted=adminDao.getCompleted();
 			Integer totalDelayedProject=adminDao.getTotalDelayedProject();
+			List<UtilizedHoursChartBean> chartData=adminDao.getProjectStats();
 			
 			
 			
 			model.addAttribute("totalInProgessProject",totalInProgessProject);
 			model.addAttribute("totalCompleted",totalCompleted);
 			model.addAttribute("totalDelayedProject",totalDelayedProject);
-			
+			model.addAttribute("chartData",chartData);
 			return"AdminDashboard";
 		}
 	

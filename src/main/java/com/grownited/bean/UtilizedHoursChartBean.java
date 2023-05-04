@@ -1,13 +1,14 @@
 package com.grownited.bean;
 
 public class UtilizedHoursChartBean {
-	Integer hours;
+	Integer utilizedHours;
 	String projectName;
-	public Integer getHours() {
-		return hours;
+	
+	public Integer getUtilizedHours() {
+		return utilizedHours;
 	}
-	public void setHours(Integer hours) {
-		this.hours = hours;
+	public void setUtilizedHours(Integer utilizedHours) {
+		this.utilizedHours = utilizedHours;
 	}
 	public String getProjectName() {
 		return projectName;

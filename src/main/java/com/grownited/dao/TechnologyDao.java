@@ -41,7 +41,7 @@ public class TechnologyDao {
 		
 	}
 	
-	//list
+//view
 	
 	
 	public TechnologyBean getTechnologyById(Integer technologyId) {

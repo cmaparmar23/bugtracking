@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.grownited.bean.ForgetPasswordBean;
 import com.grownited.bean.LoginBean;
 import com.grownited.bean.ProjectUserBean;
-import com.grownited.bean.TechnologyBean;
+import com.grownited.bean.UserBean;
 import com.grownited.bean.UpdatePasswordBean;
 import com.grownited.bean.UserBean;
 
@@ -118,6 +118,9 @@ public List<UserBean>getAllUser(){
 		List<UserBean>listUser=stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
 		return listUser;
 	}
+
+//view
+
 public UserBean getUserById(Integer userId) {
 	UserBean userBean=null;
 	try {
@@ -131,6 +134,16 @@ public UserBean getUserById(Integer userId) {
 	}
 	return userBean;
 }
+
+
+//update
+
+public void updateUser (UserBean userBean) {
+String updateQuery="update users set firstName=?,lastName=?,email=?,password=?,gender=?,number=?,role=? where userId=?";
+stmt.update(updateQuery,userBean.getFirstName(),userBean.getLastName(),userBean.getEmail(),userBean.getPassword(),userBean.getGender(),userBean.getNumber(),userBean.getRole(),userBean.getUserId());
+
+}
+
 
 
 

@@ -1,5 +1,5 @@
-<%@page import="com.grownited.bean.TaskUserBean"%>
-<%@page import="com.grownited.bean.TaskUserBean"%>
+
+<%@page import="com.grownited.bean.ProjectBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -7,28 +7,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Bug Tracking |List Task User</title>
-<jsp:include page="AllCss.jsp"></jsp:include>
+<title>Bug Tracking | List Project</title>
 
+<jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-
-
 
 <jsp:include page="NavBar.jsp"></jsp:include>
 
 
 <div class="container-fluid page-body-wrapper">
 
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Task User Tables </h3>
+              <h3 class="page-title"> Project Tables </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Task User</li>
+                  <li class="breadcrumb-item active" aria-current="page">Project</li>
                 </ol>
               </nav>
             </div>
@@ -41,51 +39,47 @@
                    
                  
                     
-<%
-	List<TaskUserBean>listTaskUser= (List<TaskUserBean>)request.getAttribute("listTaskUser");
-%>
+                   <%
+						List<ProjectBean> listProject=(List<ProjectBean>)request.getAttribute("plistProject");
+					%>
 					
 					
-                    <table class="table table-striped" id="taskuser">
+                    <table class="table table-striped" id="project">
                       <thead>
                         <tr>
-                       	<th>TaskUserId</th>
-					
-						<th>User Name</th>
-						
-						<th>Task Name</th>
-						<th>Assign Status</th>
-						
+                         <th>ProjectId</th>
+						<th>Project Name</th>
+						<th>TechnologyId</th>
+						<th>technology Name</th>
 						<th>Status</th>
-						<th>Utilized Hours</th>
+				
 						<th>Action</th>
+                       
                         </tr>
                       </thead>
-<%
-	for(TaskUserBean tub:listTaskUser){
-%>
-
+                     <%
+						for(ProjectBean pb:listProject){
+						%>
                       <tbody>
                       
                         <tr>
-							<td><%=tub.getTaskUserId() %></td>
-				
-							<td><%=tub.getFirstName() %></td>
-						
-							<td><%=tub.getTaskName() %></td>
-							<td><%=tub.getAssignStatus() %></td>
-						
-							<td><%=tub.getStatusName() %></td>
-							<td><%=tub.getUtilizedHours() %></td>
-		
-							<td>
-							<a href="viewtaskuser?taskUserId=<%=tub.getTaskUserId()%>"><i class="mdi mdi-eye"></i></a>
-							|
-							<a href="edittaskuser?taskUserId=<%=tub.getTaskUserId()%>"><i class="mdi mdi-pencil"></i></a>
-							|
-							<a href="deletetaskuser/<%=tub.getTaskUserId() %>"><i class="mdi mdi-delete"></i></a>
-							</td>
-	</tr>
+                        			 <td><%=pb.getProjectId() %></td>
+									<td><%=pb.getProjectName()%></td>
+									<td><%=pb.getTechnologyId() %></td>
+									<td><%=pb.getTechnologyName() %></td>
+									<td><%=pb.getStatusName() %></td>
+									
+	
+	
+								<td><a href="viewproject?projectId=<%=pb.getProjectId()%>"><i class="mdi mdi-eye"></i></a>
+									|
+									<a href="editproject?projectId=<%=pb.getProjectId()%>"><i class="mdi mdi-pencil"></i></a>
+									|
+									<a href="deleteproject/<%=pb.getProjectId() %>"><i class="mdi mdi-delete"></i></a>
+									</td>
+									
+                        </tr>
+                        
                         <%
 								}
 						%>
@@ -93,16 +87,15 @@
                         
                           </tbody>
                     </table>
-                    
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-                   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-                   <script >$(document).ready(function () {
-                	    $('#taskuser').DataTable();
+                    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+                   <script>$(document).ready(function () {
+                	    $('#project').DataTable();
                    });</script>
                     
                     
                     <div class="mt-3">
-                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="newtaskuser">ADD TASK USER</a></i>
+                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="p_newproject">ADD PROJECT</a></i>
                   </div>
                   
                   
@@ -128,6 +121,8 @@
 
 
  </div>
+  
+
 
 </body>
 </html>

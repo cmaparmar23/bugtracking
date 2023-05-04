@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.ModuleBean;
+import com.grownited.bean.ProjectUserBean;
 import com.grownited.bean.TaskUserBean;
 
 @Repository
@@ -52,6 +53,10 @@ public class TaskUserDao {
 		return taskUserBean;
 	}
 	
+	public void updateTaskUser(TaskUserBean taskUserBean) {
+		String updateQuery="update taskuser set taskId=?,userId=?,statusId=?,assignStatus=?,utilizedHours where taskUserId=?";
+		stmt.update(updateQuery,taskUserBean.getTaskId(),taskUserBean.getUserId(),taskUserBean.getStatusId(),taskUserBean.getAssignStatus(),taskUserBean.getUtilizedHours(),taskUserBean.getTaskUserId());
+	}
 	
 
 }

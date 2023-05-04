@@ -76,7 +76,7 @@
 
               <img src="${user.imageUrl }" alt="Profile" class="rounded-circle">
               <h2>${user.firstName}</h2>
-              <h3>${user.role==1?"Admin":"Customer"}</h3>
+              <h3>${user.role==1?"Admin":"Project Manager"}</h3>
               
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -176,28 +176,7 @@
                       </div>
                     </div>
                     
-                    
-                    
-                 
-                    
-                                     
-            
-                    <input type="hidden" name="userId" value="${user.userId}">
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form><!-- End Profile Edit Form -->
-
-                </div>
-
-
-
- <div class="tab-pane fade profile-edit pt-3" id="profile-settings" role="tabpanel">
-
-                  <!-- Profile Edit Form -->
-                  <form action="updaprofiledetail" method="post" >
-                                     <input type="hidden" name="projectId" value="${userBean.userId }"/> 
+                     <input type="hidden" name="projectId" value="${userBean.userId }"/> 
                   
                   
                    
@@ -231,6 +210,29 @@
                     
                     
                     
+                    
+                    
+                    
+                 
+                    
+                                     
+            
+                    <input type="hidden" name="userId" value="${user.userId}">
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form><!-- End Profile Edit Form -->
+
+                </div>
+
+
+
+ <div class="tab-pane fade profile-edit pt-3" id="profile-settings" role="tabpanel">
+
+                  <!-- Profile Edit Form -->
+                  <form action="updaprofiledetail" method="post" >
+                                    
                                      
             
         <div class="text-center">
