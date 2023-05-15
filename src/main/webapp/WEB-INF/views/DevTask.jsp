@@ -1,3 +1,4 @@
+<%@page import="com.grownited.bean.TaskUserBean"%>
 <%@page import="com.grownited.bean.TaskBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -17,7 +18,7 @@
 
 <div class="container-fluid page-body-wrapper">
 
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
@@ -39,46 +40,39 @@
                  
                     
 <%
-	List<TaskBean>listTask= (List<TaskBean>)request.getAttribute("listTask");
+	List<TaskUserBean>devlist7=(List<TaskUserBean>)request.getAttribute("devlist7");
 %>
 					
 					
                     <table class="table table-striped" id="task">
                       <thead>
                         <tr>
-                       <th>TaskId</th>
-						<th>TaskName</th>
-						
-						<th>ModuleName</th>
-						
+                       
 						<th>ProjectName</th>
-					
-						<th>Status</th>
 						
-						<th>Action</th>
+						<th>Assign Status</th>
+						
+									
+						<th>Status</th>
+						<th>Utilized Hours</th>
+						
                         </tr>
                       </thead>
-<%
-	for(TaskBean tb:listTask){
-%>
 
+<%
+for(TaskUserBean tu:devlist7) {
+%>
                       <tbody>
                       
                         <tr>
-                        			 <td><%=tb.getTaskId() %></td>
-									<td><%=tb.getTaskName() %></td>
-									<td><%=tb.getModuleName() %></td>
-									<td><%=tb.getProjectName() %></td>
-									<td><%=tb.getStatusName() %></td>
-			
+                        			 
 									
 									
-								<td><a href="viewtask?taskId=<%=tb.getTaskId()%>"><i class="mdi mdi-eye"></i></a>
-									|
-									<a href="edittask?taskId=<%=tb.getTaskId()%>"><i class="mdi mdi-pencil"></i></a>
-									|
-									<a href="deletetask/<%=tb.getTaskId() %>"><i class="mdi mdi-delete"></i></a>
-									</td>
+							<td><%=tu.getProjectName() %></td>
+							<td><%=tu.getAssignStatus() %></td>
+							<td><%=tu.getStatusName() %></td>
+							<td><%=tu.getUtilizedHours() %></td>
+															
 									
 								
                         </tr>
@@ -97,9 +91,9 @@
                    });</script>
                     
                     
-                    <div class="mt-3">
-                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="newtask">ADD TASK</a></i>
-                  </div>
+                  <!--    <div class="mt-3">
+                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="dnewtask">ADD TASK</a></i>
+                  </div>-->
                   
                   
                   </div>

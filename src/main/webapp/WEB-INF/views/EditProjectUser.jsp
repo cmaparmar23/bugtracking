@@ -111,12 +111,18 @@
                      
                      
           
-                      <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Assign Status</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" name="assignStatus" value="${projectUserBean. assignStatus}">
-                        </div>
+                     
+                      
+                       <div class="form-group row">
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Assign Status</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="assignStatus" id="assignStatus" value="${projectUserBean. assignStatus}">
+                           <option value="-1">Select</option>
+                          <option>1:Assign</option>
+                          <option>2:Revoke</option>
+                        </select>
                       </div>
+                       </div>
                       
                     
               

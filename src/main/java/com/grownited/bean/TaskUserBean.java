@@ -5,13 +5,14 @@ public class TaskUserBean {
 	private Integer taskUserId;
 	private Integer userId ;       
 	private Integer taskId ;
-	private Integer assignStatus ;
+	private String assignStatus ;
 	private Integer statusId;      
 	private Integer utilizedHours;
 	
 	private String firstName;
 	private String taskName;
 	private String statusName;
+	private String projectName;
 	public Integer getTaskUserId() {
 		return taskUserId;
 	}
@@ -30,10 +31,11 @@ public class TaskUserBean {
 	public void setTaskId(Integer taskId) {
 		this.taskId = taskId;
 	}
-	public Integer getAssignStatus() {
+	
+	public String getAssignStatus() {
 		return assignStatus;
 	}
-	public void setAssignStatus(Integer assignStatus) {
+	public void setAssignStatus(String assignStatus) {
 		this.assignStatus = assignStatus;
 	}
 	public Integer getStatusId() {
@@ -66,6 +68,13 @@ public class TaskUserBean {
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
 	}
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	
 	
 
 }

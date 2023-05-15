@@ -131,7 +131,13 @@ public class SessionController {
 			
 				{
 						return"redirect:/developerdashboard";
-				}	
+				}
+				else if(userBean.getRole()==4)
+					//qa
+				
+					{
+							return"QADashboard";
+					}
 			else {
 					return "404";
 				}

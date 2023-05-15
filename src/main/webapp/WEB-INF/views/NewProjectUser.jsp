@@ -105,11 +105,15 @@
                      
                      
           
-                      <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Assign Status</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" name="assignStatus">
-                        </div>
+                      
+                       <div class="form-group row">
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Assign Status</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="assignStatus" id="assignStatus">
+                           <option value="-1">Select</option>
+                          <option>Assign</option>
+                          <option>Revoke</option>
+                        </select>
                       </div>
                       
                     

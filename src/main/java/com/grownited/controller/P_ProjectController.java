@@ -45,10 +45,10 @@ public class P_ProjectController {
 		return "redirect:/p_listproject";
 }
 	@GetMapping("/p_listproject")
-	public String listP_Project(Model model) {
+	public String listP_Project(Model model,Integer userId) {
 		
 		//pull all category from db-table
-		List<ProjectBean> plistProject=projectDao.getAllP_Project();
+		List<ProjectBean> plistProject=projectDao.getAllP_Project(userId);
 		model.addAttribute("plistProject",plistProject);
 		return "P_ListProject";
 	}

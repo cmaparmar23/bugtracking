@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.ModuleBean;
 import com.grownited.bean.TaskBean;
+import com.grownited.bean.TaskUserBean;
 
 @Repository
 public class TaskDao {
@@ -60,4 +61,25 @@ public class TaskDao {
 		stmt.update(updateQuery,taskBean.getTaskName(),taskBean.getProjectId(),taskBean.getStatusId(),taskBean.getModuleId(),taskBean.getEstimatedHours(),taskBean.getTotalUtilizedHours(),taskBean.getDocumentUrl(),taskBean.getDescription(),taskBean.getTaskId());
 		
 	}
+
+
+
+//developer
+
+public void daddTask(TaskBean taskBean) {
+	String insertQuery="insert into task(moduleId,statusId,projectId,taskName,estimatedHours,totalUtilizedHours,documentUrl,description)values(?,?,?,?,?,?,?,?)";
+	
+	stmt.update(insertQuery,taskBean.getModuleId(),taskBean.getStatusId(),taskBean.getProjectId(),taskBean.getTaskName(),taskBean.getEstimatedHours(),taskBean.getTotalUtilizedHours(),taskBean.getDocumentUrl(),taskBean.getDescription());
+	
 }
+public List<TaskUserBean> getDAllTask(Integer userId) {
+	String selectQuery="select p.projectName,tu.assignStatus,s.statusName,tu.utilizedHours from taskuser tu,users u,project p,status s , task t where  tu.taskId=t.taskId and t.projectId=p.projectId and tu.userId=u.userId and tu.userId=?";
+	List<TaskUserBean> dlistTask=stmt.query(selectQuery, new BeanPropertyRowMapper<TaskUserBean>(TaskUserBean.class),new Object[]{userId});
+	return dlistTask;
+
+	
+}	
+}
+
+
+

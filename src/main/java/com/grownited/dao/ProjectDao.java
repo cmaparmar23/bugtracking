@@ -69,10 +69,10 @@ public class ProjectDao {
 		stmt.update(insertQuery,projectBean.getProjectName(),projectBean.getDescription(),projectBean.getTechnologyId(),projectBean.getEstimatedHours(),projectBean.getStartDate(),projectBean.getCompletionDate(),projectBean.getUtilizedHours(),projectBean.getStatusId(),false);
 	}
 	
-	public List<ProjectBean>getAllP_Project(){
+	public List<ProjectBean>getAllP_Project(Integer userId){
 		
-		String SQuery = "select count(*) from project where statusId=1 and projectId in(select projectId from projectuser where userId)";
-		return stmt.query(SQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class));
+		String SQuery = "select count(*) from project where statusId=2 and projectId in(select projectId from projectuser where userId=?)";
+		return stmt.query(SQuery,new BeanPropertyRowMapper<ProjectBean>(ProjectBean.class),userId);
 	
 	
 		

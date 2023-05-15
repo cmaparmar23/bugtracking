@@ -4,7 +4,7 @@ public class ProjectUserBean {
 	private Integer projectUserId ;
 	 private Integer userId ;      
 	 private Integer projectId;     
-	 private Integer assignStatus;
+	 private String assignStatus;
 	 
 	 private String firstName;
 	 private String projectName;
@@ -28,12 +28,14 @@ public class ProjectUserBean {
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
-	public Integer getAssignStatus() {
+	
+		
+	
+	public String getAssignStatus() {
 		return assignStatus;
 	}
-	public void setAssignStatus(Integer assignStatus) {
+	public void setAssignStatus(String assignStatus) {
 		this.assignStatus = assignStatus;
-		
 	}
 	public String getFirstName() {
 		return firstName;

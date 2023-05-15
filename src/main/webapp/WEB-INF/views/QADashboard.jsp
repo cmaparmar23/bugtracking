@@ -17,7 +17,7 @@
   
  <div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
  
- <jsp:include page="DeveloperSideBar.jsp"></jsp:include>
+ <jsp:include page="QASideBar.jsp"></jsp:include>
  
  <div class="main-panel">
           <div class="content-wrapper">

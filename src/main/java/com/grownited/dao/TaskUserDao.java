@@ -58,5 +58,46 @@ public class TaskUserDao {
 		stmt.update(updateQuery,taskUserBean.getTaskId(),taskUserBean.getUserId(),taskUserBean.getStatusId(),taskUserBean.getAssignStatus(),taskUserBean.getUtilizedHours(),taskUserBean.getTaskUserId());
 	}
 	
+	
+//devloper task
+	
+	public List<TaskUserBean>getDevAllTask(Integer userId){
+		String selectQuery="select p.projectName,tu.assignStatus,s.statusName,tu.utilizedHours from taskuser tu,users u,task t,project p,status s where tu.taskId=t.taskId and t.projectId=p.projectId and tu.statusId=s.statusId and tu.userId=u.userId and u.userId=?";
+		List<TaskUserBean>devlist7=stmt.query(selectQuery, new BeanPropertyRowMapper<>(TaskUserBean.class),new Object[] {userId});
+		return devlist7;
+	}
+	
+	public Integer getTotalTask(Integer userId) {
+		String countQuery="select count(*) from taskuser where userId=?";
+		return stmt.queryForObject(countQuery, Integer.class,new Object[] {userId});
+	}
+	
+	
+	public Integer getInprogressTask(Integer userId) {
+		String countQuery="select count(*) from taskuser where userId=? and statusId=3"; //progress
+		return stmt.queryForObject(countQuery, Integer.class,new Object[] {userId});
+	}
+	
+	
+	public Integer getEstimatedHours(Integer userId) {
+		String countQuery="select sum(t.estimatedHours) from task t,taskuser tu where t.taskId=tu.taskId and userId=?";
+		return stmt.queryForObject(countQuery, Integer.class,new Object[] {userId});
+		
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
