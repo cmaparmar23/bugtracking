@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.ProjectUserBean;
+import com.grownited.bean.UserBean;
 import com.grownited.dao.ProjectDao;
 import com.grownited.dao.ProjectUserDao;
 import com.grownited.dao.UserDao;
@@ -55,6 +57,7 @@ public class ProjectUserController {
 		//pull all category from db-table
 		List<ProjectUserBean> listProjectUser=projectUserDao.getAllProjectUser();
 		model.addAttribute("listProjectUser",listProjectUser);
+		L
 		return "ListProjectUser";
 	}
 	
@@ -93,7 +96,16 @@ public class ProjectUserController {
 	}
 	
 	
+	//
 	
+	@GetMapping("/managerproject")
+	public String managerProject(Model model,HttpSession session) {
+		UserBean user=(UserBean)session.getAttribute("user");
+		model.addAttribute("managerproject",projectUserDao.getManagerProject(user.getUserId()));
+		return"P_ListProject";
+		
+		
+	}
 	
 	
 

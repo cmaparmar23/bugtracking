@@ -110,10 +110,11 @@
                         <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Assign Status</label>
                       <div class="col-sm-9">
                         <select class="form-control" name="assignStatus" id="assignStatus">
-                           <option value="-1">Select</option>
-                          <option>Assign</option>
-                          <option>Revoke</option>
+                           <option>--Assign Status--</option>
+                          <option value="1">Assign</option>
+                          <option value="2">Revoke</option>
                         </select>
+                      </div>
                       </div>
                       
                     

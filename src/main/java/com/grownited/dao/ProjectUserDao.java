@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.ModuleBean;
+import com.grownited.bean.ProjectBean;
 import com.grownited.bean.ProjectUserBean;
 
 @Repository
@@ -24,8 +25,7 @@ public class ProjectUserDao {
 	public List<ProjectUserBean>getAllProjectUser(){
 		String joinQuery="select u.firstName,p.projectName,pu.projectUserId,pu.userId,pu.projectId,pu.assignStatus from project p,users u,projectuser pu where pu.userId=u.userId and pu.projectId=p.projectId";
 		return stmt.query(joinQuery,new BeanPropertyRowMapper<ProjectUserBean>(ProjectUserBean.class));
-
-		
+	
 		
 	}
 	
@@ -56,5 +56,48 @@ public class ProjectUserDao {
 		stmt.update(updateQuery,projectUserBean.getUserId(),projectUserBean.getProjectId(),projectUserBean.getAssignStatus(),projectUserBean.getProjectUserId());
 	}
 	
+	//
+	
+	
+public List<ProjectUserBean> getManagerProject(Integer userId){
+		
+		String selectQuery="select p.projectName,pu.assignStatus,pu.projectId from project p,projectuser pu where pu.projectId=p.projectId and userId=?";
+		List<ProjectUserBean>listProject=stmt.query(selectQuery, new BeanPropertyRowMapper<>(ProjectUserBean.class),new Object[] {userId});
+		return listProject;
+	
+		
+	}
+	public Integer getTotalProject() {
+		String countQuery="select count(*) from projectuser";
+		return stmt.queryForObject(countQuery, Integer.class);
+	}
+	
+	public Integer getTotalRunningProject() {
+		String countQuery="select count(*) from projectuser  where assignStatus=1";
+		return stmt.queryForObject(countQuery, Integer.class);
+		
+	}
+	
+	public Integer getUtilizedHours() {
+		String countQuery="select sum(p.utilizedHours ) from project p,projectuser pu where pu.projectId=p.projectId ";
+		return stmt.queryForObject(countQuery, Integer.class);
+	}
+
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

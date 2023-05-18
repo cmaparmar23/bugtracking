@@ -97,6 +97,33 @@ public class TaskController {
 		taskDao.updateTask(taskBean);
 		return "redirect:/listtask";
 	}
+	
+	
+	
+	//
+	@GetMapping("/newtask1")
+	public String newTask1(Model model) {
+		model.addAttribute("listProject",projectDao.getAllProject());
+		model.addAttribute("listStatus",statusDao.getAllStatus());
+		model.addAttribute("listModule",moduleDao.getAllModule());
+		return "NewTask1";
+		
+	}
+	
+	@PostMapping("/savetask1")
+		public String listTask1(TaskBean taskBean) {
+			taskDao.addTask(taskBean);
+			return "redirect:/listtask1";
+		
+	}
+	
+	@GetMapping("/listtask1")
+	public String listTask1(Model model) {
+		List<TaskBean>listTask=taskDao.getAllTask();
+		model.addAttribute("listTask",listTask);
+		return "ListTask1";
+	}
+		
 
 	
 

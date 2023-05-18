@@ -1,5 +1,6 @@
 package com.grownited.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,22 @@ public class TaskUserDao {
 	JdbcTemplate stmt;
 	
 	public void addTaskUser(TaskUserBean taskUserBean) {
-		String insertQuery="insert into taskUser(userId,taskId,assignStatus,statusId,utilizedHours) values(?,?,?,?,?)";
 		
-		stmt.update(insertQuery,taskUserBean.getUserId(),taskUserBean.getTaskId(),taskUserBean.getAssignStatus(),taskUserBean.getStatusId(),taskUserBean.getUtilizedHours());
+		Calendar c = Calendar.getInstance();
+		int ddd = c.get(Calendar.DATE);
+		int mmm = c.get(Calendar.MONTH) + 1;
+		int yyy = c.get(Calendar.YEAR);
+		String today = "";
+		if (mmm < 10) {
+			today = yyy + "-0" + mmm + "-" + ddd;
+		} else {
+			today = yyy + "-" + mmm + "-" + ddd;
+		}
+		System.out.println("TODAY => " + today);
+		
+		String insertQuery="insert into taskUser(userId,taskId,assignStatus,statusId,utilizedHours,assignDate) values(?,?,?,?,?,?)";
+		
+		stmt.update(insertQuery,taskUserBean.getUserId(),taskUserBean.getTaskId(),taskUserBean.getAssignStatus(),taskUserBean.getStatusId(),taskUserBean.getUtilizedHours(),today);
 	}
 	
 	public List<TaskUserBean>getAllTaskUser(){

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.ProfileBean;
+import com.grownited.bean.ProjectChartBean;
 import com.grownited.bean.TechnologyBean;
 import com.grownited.bean.UserBean;
 import com.grownited.bean.UtilizedHoursChartBean;
@@ -49,9 +50,31 @@ public class AdminDao {
 		stmt.update("update users set imageUrl =? where userId=?",profileBean.getImageUrl(),profileBean.getUserId());
 		
 	}
+	
+	//developer chart
+	
+	public List<ProjectChartBean> getTaskStatus(Integer userId) {
+		String selectQuery = "select monthname(assignDate) as month , count(taskUserId) as taskCount from taskuser where userId=? and year(assignDate) = 2023 group by monthname(assignDate),month(assignDate) order by month(assignDate)";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ProjectChartBean>(ProjectChartBean.class),new Object[] {userId});
+	}
+	
+	public List<ProjectChartBean>getMyProjectStatus(Integer userId) {
+		String selectQuery="select monthname(assignDate) as month,count(projectId) as projectcount from projectuser where userId=? and year(assignDate)=2023 group by monthname(assignDate),month(assignDate) order by month(assignDate) ";
+		return stmt.query(selectQuery, new BeanPropertyRowMapper<ProjectChartBean>(ProjectChartBean.class),new Object[] {userId});
+	}
+	
 
 	
 	
 		
 
 }
+
+
+
+
+
+
+
+
+

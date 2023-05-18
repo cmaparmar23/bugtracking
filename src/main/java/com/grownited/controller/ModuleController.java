@@ -90,6 +90,40 @@ public class ModuleController {
 			moduleDao.updateModule(moduleBean);
 			return "redirect:/listmodule";
 		}
+	//projectmanager
+		
+		@GetMapping("/newmodule1")
+		public String newModule1(Model model) {
+			model.addAttribute("listProject",projectDao.getAllProject());
+			model.addAttribute("listStatus",statusDao.getAllStatus());
+			return "NewModule1";
+			
+		}
+		
+		@PostMapping("/savemodule1")
+		public String saveModule1(ModuleBean moduleBean) {
+			System.out.println(moduleBean.getModuleId());
+			System.out.println(moduleBean.getModuleName());
+			moduleDao.addModule(moduleBean);
+			return "redirect:/listmodule1";
+			
+		}
+		
+		
+		@GetMapping("/listmodule1")
+		public String listModule1(Model model) {
+			List<ModuleBean>listModule=moduleDao.getAllModule();
+			model.addAttribute("listModule",listModule);
+			return "ListModule1";
+			
+		}
+		
+		@GetMapping("/viewmodule1")
+		public String viewModule1(@RequestParam("moduleId")Integer moduleId,Model model) {
+			ModuleBean moduleBean =moduleDao.getModuleById(moduleId);
+			model.addAttribute("moduleBean",moduleBean);
+		return "ViewModule1";
+		}
 		
 	
 	

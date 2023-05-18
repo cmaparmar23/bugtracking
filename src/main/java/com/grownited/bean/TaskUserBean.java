@@ -13,6 +13,7 @@ public class TaskUserBean {
 	private String taskName;
 	private String statusName;
 	private String projectName;
+	private String assignDate;
 	public Integer getTaskUserId() {
 		return taskUserId;
 	}
@@ -74,6 +75,13 @@ public class TaskUserBean {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
+	public String getAssignDate() {
+		return assignDate;
+	}
+	public void setAssignDate(String assignDate) {
+		this.assignDate = assignDate;
+	}
+	
 	
 	
 

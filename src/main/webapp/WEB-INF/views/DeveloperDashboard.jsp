@@ -1,4 +1,6 @@
-9<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+9<%@page import="com.grownited.bean.ProjectChartBean"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%> <html>
   
   <head>
@@ -73,29 +75,53 @@
             
             
             <div class="row">
-              <div class="col-md-7 grid-margin stretch-card">
+            <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <div class="clearfix">
-                      <h4 class="card-title float-left">Visit And Sales Statistics</h4>
-                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"><ul><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(218, 140, 255, 1), rgba(154, 85, 255, 1))"></span>CHN</li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>USA</li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>UK</li></ul></div>
-                    </div>
-                    <canvas id="visit-sale-chart" class="mt-4 chartjs-render-monitor" style="display: block; width: 497px; height: 248px;" width="497" height="248"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <h4 class="card-title">Traffic Sources</h4>
-                    <canvas id="traffic-chart" width="320" height="160" style="display: block; width: 320px; height: 160px;" class="chartjs-render-monitor"></canvas>
-                    <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"><ul><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(54, 215, 232, 1), rgba(177, 148, 250, 1))"></span>Search Engines<span class="float-right">30%</span></li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(6, 185, 157, 1), rgba(132, 217, 210, 1))"></span>Direct Click<span class="float-right">30%</span></li><li><span class="legend-dots" style="background:linear-gradient(to right, rgba(255, 191, 150, 1), rgba(254, 112, 150, 1))"></span>Bookmarks Click<span class="float-right">40%</span></li></ul></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <div class="card-body">
+                  <h5 class="card-title">Project-Utilized Hours</h5>
             
             
+             <%
+              List<ProjectChartBean> chartData = (List<ProjectChartBean>)request.getAttribute("chartData");
+              %>
+
+              <!-- Bar Chart -->
+				<div>
+              <canvas id="barChart"></canvas>
+              </div>
+              <script>
+  const ctx = document.getElementById('barChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [
+    	  <%for(ProjectChartBean pc:chartData){%>
+    	'<%=pc.getMonth()%>',
+    	  <%}%>],
+      datasets: [{
+        label: '# of UtilizedHors',
+        data: [
+        	<%for(ProjectChartBean pc :chartData){%>
+        	<%=pc.getTaskCount()%>,
+        	<%}%>
+        	
+        	],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+             
+</div>
+</div>
                    </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

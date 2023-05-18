@@ -26,5 +26,8 @@ public class ProjectManagerDao {
 		stmt.update("update users set imageUrl =? where userId=?",profileBean.getImageUrl(),profileBean.getUserId());
 		
 	}
+	
+	
+	
 
 }

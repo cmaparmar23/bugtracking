@@ -16,7 +16,7 @@
                 
                 <div class="nav-profile-text d-flex flex-column">
                   <span class="font-weight-bold mb-2">${user.firstName}</span>
-                  <span class="text-secondary text-small">${ user.role==1?"Admin":" "}${user.role==2?"ProjectManager":"Developer"}</span>
+                  <span class="text-secondary text-small">${user.role==2?"ProjectManager":"Developer"}</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
@@ -35,7 +35,7 @@
             
             
             <li class="nav-item">
-              <a class="nav-link" href="p_listproject">
+              <a class="nav-link" href="managerproject">
                 <span class="menu-title">Project</span>
           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
@@ -45,7 +45,7 @@
           
             
              <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="listmodule1">
                 <span class="menu-title">Module</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
@@ -54,7 +54,7 @@
              
             
              <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="listtask1">
                 <span class="menu-title">Task</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>

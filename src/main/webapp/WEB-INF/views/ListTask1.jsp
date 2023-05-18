@@ -1,6 +1,4 @@
-
-<%@page import="com.grownited.bean.ProjectUserBean"%>
-<%@page import="com.grownited.bean.ProjectBean"%>
+<%@page import="com.grownited.bean.TaskBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -8,9 +6,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Bug Tracking | List Project</title>
-
+<title>Bug Tracking | List Task</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
+
 </head>
 <body>
 
@@ -23,11 +21,11 @@
 <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Project Tables </h3>
+              <h3 class="page-title"> Task Tables </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="admindashboard">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Project</li>
+                  <li class="breadcrumb-item active" aria-current="page">Task</li>
                 </ol>
               </nav>
             </div>
@@ -39,42 +37,41 @@
                   <div class="card-body">
                    
                  
-                  
+                    
+<%
+	List<TaskBean>listTask= (List<TaskBean>)request.getAttribute("listTask");
+%>
 					
 					
-                    <table class="table table-striped" id="project">
+                    <table class="table table-striped" id="task">
                       <thead>
                         <tr>
-                         
-						<th>Project Name</th>
+                      
 						
+						<th>ModuleName</th>
+						<th>Task Name</th>
 						<th>Status</th>
-				
-						<th>Action</th>
-                       
+						<th>Estimated Hours</th>
+						<th>Total Utilized</th>
+						<th>Doc URL</th>
+						<th>Description</th>
+					
                         </tr>
                       </thead>
-                     <%
-				List<ProjectUserBean>listProject=(List<ProjectUserBean>)request.getAttribute("managerproject");
-						%>
+<%
+	for(TaskBean tb:listTask){
+%>
+
                       <tbody>
-                      <%
-                      for(ProjectUserBean p :listProject){%>
                       
                         <tr>
-									<td><%=p.getProjectName()%></td>
-									
-									<td><%=p.getAssignStatus() %></td>
-									
-	
-	
-								<td><a href="viewproject?projectId=<%=p.getProjectId()%>"><i class="mdi mdi-eye"></i></a>
-									|
-									<a href="editproject?projectId=<%=p.getProjectId()%>"><i class="mdi mdi-pencil"></i></a>
-									|
-									<a href="deleteproject/<%=p.getProjectId() %>"><i class="mdi mdi-delete"></i></a>
-									</td>
-									
+                        			 <td><%=tb.getModuleName() %></td>
+									<td><%=tb.getTaskName() %></td>
+									<td><%=tb.getStatusName()%></td>
+									<td><%=tb.getEstimatedHours()%></td>
+									<td><%=tb.getTotalUtilizedHours() %></td>
+									<td><%=tb.getDocumentUrl() %></td>
+									<td><%=tb.getDescription() %></td>
                         </tr>
                         
                         <%
@@ -85,14 +82,14 @@
                           </tbody>
                     </table>
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-                    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-                   <script>$(document).ready(function () {
-                	    $('#project').DataTable();
+                   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+                   <script >$(document).ready(function () {
+                	    $('#task').DataTable();
                    });</script>
                     
                     
                     <div class="mt-3">
-                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="p_newproject">ADD PROJECT</a></i>
+                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="newtask1">ADD TASK</a></i>
                   </div>
                   
                   
@@ -118,8 +115,6 @@
 
 
  </div>
-  
-
-
+ 
 </body>
 </html>

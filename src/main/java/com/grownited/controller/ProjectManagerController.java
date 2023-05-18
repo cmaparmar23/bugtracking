@@ -3,6 +3,8 @@ package com.grownited.controller;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,23 +13,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.bean.ProfileBean;
+import com.grownited.bean.ProjectChartBean;
 import com.grownited.bean.StatusChartBean;
+import com.grownited.bean.UserBean;
+import com.grownited.dao.AdminDao;
 import com.grownited.dao.ProjectManagerDao;
+import com.grownited.dao.ProjectUserDao;
 
 @Controller
 public class ProjectManagerController {
+	
+	@Autowired
+	ProjectUserDao projectUserDao;
+	
+	@Autowired
+	AdminDao adminDao;
+	
 	
 	
 	@Autowired
 	ProjectManagerDao projectManagerDao;
 	
 	@GetMapping("/projectmanagerdashboard")
-	public String managerDashboard(Model model) {
-		System.out.println("Inside projectmanagerdashboard --url-metho--");
+	public String managerDashboard(Model model,HttpSession session) {
+		UserBean user=(UserBean)session.getAttribute("user");
 		
+		Integer getTotalProjectYear=projectUserDao.getTotalProject();
+		Integer getTotalRunningProject=projectUserDao.getTotalRunningProject();
+		Integer getUtilizedHours=projectUserDao.getUtilizedHours();
+		List<ProjectChartBean>chartData=adminDao.getMyProjectStatus(user.getUserId());
 		
-		List<StatusChartBean>chartData=projectManagerDao.getProjectStatus();
-		
+		model.addAttribute("getTotalProjectYear",getTotalProjectYear);
+		model.addAttribute("getTotalRunningProject",getTotalRunningProject);
+		model.addAttribute("getUtilizedHours",getUtilizedHours);
 		model.addAttribute("chartData",chartData);
 
 		return"ProjectManagerDashboard";

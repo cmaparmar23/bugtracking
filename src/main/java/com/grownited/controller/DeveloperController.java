@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.bean.ProfileBean;
+import com.grownited.bean.ProjectChartBean;
 import com.grownited.bean.TaskUserBean;
 import com.grownited.bean.UserBean;
+import com.grownited.dao.AdminDao;
 import com.grownited.dao.DeveloperDao;
 import com.grownited.dao.TaskUserDao;
 
@@ -26,6 +28,9 @@ public class DeveloperController {
 	
 	@Autowired
 	TaskUserDao taskUserDao;
+	
+	@Autowired
+	AdminDao adminDao;
 
 	@GetMapping("/developerdashboard")
 	public String developerDashboard(Model model,HttpSession session) {
@@ -34,6 +39,7 @@ public class DeveloperController {
 	Integer getTotalTask=taskUserDao.getTotalTask(user.getUserId());
 	Integer getTotalProgressTask=taskUserDao.getInprogressTask(user.getUserId());
 	Integer getEstimatedHours=taskUserDao.getEstimatedHours(user.getUserId());
+	List<ProjectChartBean>chartData=adminDao.getTaskStatus(user.getUserId());
 	
 	
 	
@@ -41,6 +47,7 @@ public class DeveloperController {
 	model.addAttribute("getTotalTask",getTotalTask);
 	model.addAttribute("getTotalProgessTask",getTotalProgressTask);
 	model.addAttribute("getEstimatedHours",getEstimatedHours);
+	model.addAttribute("chartData",chartData);
 
 		return"DeveloperDashboard";
 	}
